@@ -148,7 +148,7 @@ export default function AdminLogin() {
 
           <div className="mt-8 pt-6 border-t border-gray-100 text-center space-y-3">
             <a
-              href="https://wa.me/59167048182"
+              href="https://wa.me/59160696565"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 text-gold hover:text-gold-dark transition-colors font-medium"
