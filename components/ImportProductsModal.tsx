@@ -94,7 +94,7 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
     
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'joyeria_esmeralda');
+    formData.append('upload_preset', 'joyeria_catalina');
 
     try {
       const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {

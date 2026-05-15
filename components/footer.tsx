@@ -3,13 +3,13 @@ import { WHATSAPP_ADMIN } from '@/lib/constants';
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal text-white py-12 mt-auto">
+    <footer className="bg-[#722F37] text-white py-12 mt-auto">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-8">
           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-lg">
-            <span className="text-white text-2xl font-bold">JE</span>
+            <span className="text-white text-2xl font-bold">JC</span>
           </div>
-          <h3 className="text-3xl font-bold text-white tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Esmeralda</h3>
+          <h3 className="text-3xl font-bold text-white tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Catalina</h3>
           <p className="text-gray-400">Belleza que brilla, calidad que perdura</p>
         </div>
         
@@ -26,7 +26,7 @@ export function Footer() {
             <span className="text-white text-sm font-medium">WhatsApp</span>
           </a>
           <a 
-            href="https://www.tiktok.com/@mayorista67048182" 
+            href="https://www.tiktok.com/@www.tiktok.com.catalina" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors"
@@ -40,7 +40,7 @@ export function Footer() {
         
         <div className="border-t border-gray-700 pt-6 text-center">
           <p className="text-gray-500 text-sm tracking-wide" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>
-            © 2026 Joyería Esmeralda. Todos los derechos reservados.
+            © 2026 Joyería Catalina. Todos los derechos reservados.
           </p>
         </div>
       </div>

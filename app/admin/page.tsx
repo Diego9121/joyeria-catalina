@@ -54,7 +54,7 @@ export default function AdminLogin() {
           </h1>
           <div className="flex items-center justify-center gap-3 mt-3">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold" />
-            <span className="text-sm text-gold font-medium tracking-wide uppercase">Joyería Esmeralda</span>
+            <span className="text-sm text-gold font-medium tracking-wide uppercase">Joyería Catalina</span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold" />
           </div>
         </div>

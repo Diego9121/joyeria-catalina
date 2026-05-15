@@ -12,11 +12,11 @@ export function Header() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-              <span className="text-white text-lg font-bold">JE</span>
+              <span className="text-white text-lg font-bold">JC</span>
             </div>
             <div>
               <h1 className="text-2xl font-bold text-charcoal tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>
-                Joyería Esmeralda
+                Joyería Catalina
               </h1>
               <p className="text-xs text-gray-400 tracking-widest uppercase">Joyería Fina</p>
             </div>

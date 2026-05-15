@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export function WhatsAppButton({ phone = "59167048182" }: { phone?: string }) {
+export function WhatsAppButton({ phone = process.env.NEXT_PUBLIC_WHATSAPP_ADMIN || "59173394005" }: { phone?: string }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

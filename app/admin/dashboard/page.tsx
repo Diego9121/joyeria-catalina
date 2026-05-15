@@ -62,16 +62,16 @@ export default function Dashboard() {
 
   return (
     <AdminProtected>
-      <div className="min-h-screen" style={{ backgroundColor: '#FFF8E7' }}>
+      <div className="min-h-screen" style={{ backgroundColor: '#FDF8F5' }}>
       <header className="bg-charcoal text-gold py-3 px-4 shadow-lg">
         <div className="max-w-7xl mx-auto flex justify-between items-start gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-md">
-              <span className="text-white text-base font-bold">JE</span>
+              <span className="text-white text-base font-bold">JC</span>
             </div>
             <div>
               <h1 className="text-lg font-bold text-white">Panel Admin</h1>
-              <p className="text-xs text-gold/70 tracking-widest uppercase">Joyería Esmeralda</p>
+              <p className="text-xs text-gold/70 tracking-widest uppercase">Joyería Catalina</p>
             </div>
           </div>
           <div className="flex flex-col gap-2">

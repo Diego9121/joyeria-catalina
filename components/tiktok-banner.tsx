@@ -2,7 +2,7 @@
 
 export function TikTokBanner() {
   return (
-    <div className="bg-charcoal py-2.5 px-4">
+    <div className="bg-[#722F37] py-2.5 px-4">
       <div className="max-w-7xl mx-auto flex items-center justify-center gap-3">
         <svg
           viewBox="0 0 24 24"
@@ -15,12 +15,12 @@ export function TikTokBanner() {
           ¡Síguenos en TikTok!
         </span>
         <a
-          href="https://www.tiktok.com/@mayorista67048182"
+          href="https://www.tiktok.com/@www.tiktok.com.catalina"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 bg-gold text-charcoal px-4 py-1.5 rounded-full font-bold text-xs hover:bg-gold-dark transition-colors shadow-sm"
         >
-          <span>Joyería Esmeralda</span>
+          <span>Joyería Catalina</span>
           <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
             <path d="M19 15l-6 6-1.5-1.5L14 17H5V5h1.5l5.5 5.5L10 13l6-6z" />
           </svg>

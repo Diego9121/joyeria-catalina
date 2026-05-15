@@ -1,4 +1,4 @@
-# Joyería Esmeralda - Documentación del Proyecto
+# Joyería Catalina - Documentación del Proyecto
 
 ## Stack Tecnológico
 
@@ -17,7 +17,7 @@
 ## Estructura del Proyecto
 
 ```
-joyeria-esmeralda/
+joyeria-catalina/
 ├── app/
 │   ├── page.tsx                    # Home - Catálogo de módulos
 │   ├── modulo/[id]/page.tsx        # Catálogo de productos por módulo

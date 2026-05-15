@@ -100,7 +100,7 @@ export function HeroCategories({ modulos }: HeroCategoriesProps) {
             Piezas únicas diseñadas para brillar en cada momento especial
           </p>
           <p className="text-sm sm:text-base font-semibold text-gold mt-3 tracking-wide">
-            TIENDA VIRTUAL LA PAZ - EL ALTO - BOLIVIA
+            TIENDA VIRTUAL SANTA CRUZ - BOLIVIA
           </p>
         </div>
 

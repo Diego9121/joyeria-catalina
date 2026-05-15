@@ -1,4 +1,4 @@
-# Joyería Esmeralda - Especificación del Proyecto
+# Joyería Catalina - Especificación del Proyecto
 
 ## Stack Tecnológico
 - **Frontend/Hosting**: Next.js + Vercel (gratuito)
@@ -11,12 +11,12 @@
 
 | Módulo | Prefijo Código | Subcategorías |
 |--------|---------------|---------------|
-| Aretes | AR | Colgantes, Niña, Tambor |
-| Dormilonas | D | Juveniles, Niñas |
-| Collares | C | Tulipanes, Mixtos |
-| Anillos | A | (sin subcategorías) |
-| Pulseras | P | (sin subcategorías) |
-| Conjuntos | CO | (sin subcategorías) |
+| Aretes | AR | Colgantes, Perlas, Circones |
+| Collares | CO | Tulipanes, Cadenas, Pulsera |
+| Pulseras | PU | Acero, Cuero |
+| Anillos | AN | (sin subcategorías) |
+| Dijes | DI | (sin subcategorías) |
+| Sets | SE | (sin subcategorías) |
 
 ### Reglas de Negocio - Productos
 
@@ -209,7 +209,7 @@ Después de este tiempo, los artículos volverán a estar disponibles.
 ## Estructura de Archivos
 
 ```
-joyeria-esmeralda/
+joyeria-catalina/
 ├── app/
 │   ├── page.tsx (home + catálogo)
 │   ├── admin/
