@@ -195,6 +195,7 @@ export default function ModulosAdmin() {
         <SubcategoriaModal
           subcategoria={editingSubcategoria}
           modulos={modulos}
+          subcategorias={subcategorias}
           selectedModuloId={selectedModuloId || modulos[0]?.id}
           onClose={() => { setShowSubcategoriaModal(false); setEditingSubcategoria(null); }}
           onSave={loadData}
@@ -390,9 +391,10 @@ function ModuloModal({ modulo, onClose, onSave }: { modulo: Modulo | null; onClo
   );
 }
 
-function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, onClose, onSave }: { 
+function SubcategoriaModal({ subcategoria, modulos, subcategorias, selectedModuloId, onClose, onSave }: { 
   subcategoria: Subcategoria | null; 
   modulos: Modulo[];
+  subcategorias: Subcategoria[];
   selectedModuloId: string;
   onClose: () => void; 
   onSave: () => void;
@@ -403,12 +405,39 @@ function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, onClose, o
     prefijo_codigo: subcategoria?.prefijo_codigo || '',
   });
   const [guardando, setGuardando] = useState(false);
+  const [prefijoError, setPrefijoError] = useState('');
+
+  const subcategoriasDelModulo = subcategorias.filter(s => s.modulo_id === form.modulo_id && s.id !== subcategoria?.id);
+
+  const validarPrefijo = (prefijo: string) => {
+    if (!prefijo.trim()) {
+      setPrefijoError('');
+      return false;
+    }
+    const duplicado = subcategoriasDelModulo.find(s => s.prefijo_codigo?.toUpperCase() === prefijo.toUpperCase());
+    if (duplicado) {
+      setPrefijoError(`El prefijo '${prefijo.toUpperCase()}' ya está en uso por '${duplicado.nombre}'`);
+      return false;
+    }
+    setPrefijoError('');
+    return true;
+  };
+
+  const handlePrefijoChange = (value: string) => {
+    const upperValue = value.toUpperCase();
+    setForm({ ...form, prefijo_codigo: upperValue });
+    validarPrefijo(upperValue);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!form.prefijo_codigo || form.prefijo_codigo.trim() === '') {
       alert('El prefijo de código es obligatorio');
+      return;
+    }
+
+    if (!validarPrefijo(form.prefijo_codigo)) {
       return;
     }
     
@@ -424,7 +453,7 @@ function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, onClose, o
         await fetch('/api/admin/modulos', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ tipo: 'subcategoria', id: subcategoria.id, nombre: form.nombre, prefijo_codigo: prefijoUpper }),
+          body: JSON.stringify({ tipo: 'subcategoria', id: subcategoria.id, nombre: form.nombre, modulo_id: form.modulo_id, prefijo_codigo: prefijoUpper }),
         });
         
         if (oldPrefijo !== prefijoUpper && selectedModulo) {
@@ -470,7 +499,7 @@ function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, onClose, o
             <label className="block text-sm font-medium mb-1">Módulo</label>
             <select
               value={form.modulo_id}
-              onChange={(e) => setForm({ ...form, modulo_id: e.target.value })}
+              onChange={(e) => { setForm({ ...form, modulo_id: e.target.value }); setPrefijoError(''); }}
               className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
               required
             >
@@ -479,17 +508,35 @@ function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, onClose, o
               ))}
             </select>
           </div>
+          
+          {subcategoriasDelModulo.length > 0 && (
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+              <p className="text-xs font-medium text-amber-800 mb-2">Prefijos en uso en este módulo:</p>
+              <div className="flex flex-wrap gap-2">
+                {subcategoriasDelModulo.map(s => (
+                  <span key={s.id} className="inline-flex items-center gap-1 bg-amber-100 text-amber-800 px-2 py-1 rounded text-xs">
+                    <span className="font-bold">{s.prefijo_codigo}</span>
+                    <span>- {s.nombre}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          
           <div>
             <label className="block text-sm font-medium mb-1">Prefijo de Código *</label>
             <input
               type="text"
               value={form.prefijo_codigo}
-              onChange={(e) => setForm({ ...form, prefijo_codigo: e.target.value.toUpperCase() })}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              onChange={(e) => handlePrefijoChange(e.target.value)}
+              className={`w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold ${prefijoError ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-gold'}`}
               placeholder="Ej: C (máx 4 caracteres)"
               maxLength={4}
               required
             />
+            {prefijoError && (
+              <p className="text-red-500 text-sm mt-1">{prefijoError}</p>
+            )}
           </div>
           <div className="flex gap-4 pt-4">
             <button type="button" onClick={onClose} className="flex-1 border border-gray-300 py-2.5 rounded-lg hover:bg-gray-100">Cancelar</button>
