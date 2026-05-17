@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+export const dynamic = 'force-dynamic';
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
@@ -12,23 +14,38 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const tipo = searchParams.get('tipo') || 'modulos';
+    const page = parseInt(searchParams.get('page') || '1');
+    const limit = parseInt(searchParams.get('limit') || '15');
+    const offset = (page - 1) * limit;
 
     if (tipo === 'modulos') {
-      const { data, error } = await supabaseAdmin
+      const { data, error, count } = await supabaseAdmin
         .from('modulos')
-        .select('*')
-        .order('nombre');
+        .select('*', { count: 'exact' })
+        .order('nombre')
+        .range(offset, offset + limit - 1);
       
       if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-      return NextResponse.json({ data });
+      return NextResponse.json({ 
+        data, 
+        total: count || 0, 
+        page, 
+        totalPages: Math.ceil((count || 0) / limit) 
+      });
     } else {
-      const { data, error } = await supabaseAdmin
+      const { data, error, count } = await supabaseAdmin
         .from('subcategorias')
-        .select('*')
-        .order('nombre');
+        .select('*', { count: 'exact' })
+        .order('nombre')
+        .range(offset, offset + limit - 1);
       
       if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-      return NextResponse.json({ data });
+      return NextResponse.json({ 
+        data, 
+        total: count || 0, 
+        page, 
+        totalPages: Math.ceil((count || 0) / limit) 
+      });
     }
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

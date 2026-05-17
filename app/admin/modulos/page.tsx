@@ -17,20 +17,43 @@ export default function ModulosAdmin() {
   const [editingSubcategoria, setEditingSubcategoria] = useState<Subcategoria | null>(null);
   const [selectedModuloId, setSelectedModuloId] = useState<string>('');
 
+  const [modulosPage, setModulosPage] = useState(1);
+  const [modulosTotal, setModulosTotal] = useState(0);
+  const [subcatsPage, setSubcatsPage] = useState(1);
+  const [subcatsTotal, setSubcatsTotal] = useState(0);
+  const modulosLimit = 12;
+  const subcatsLimit = 15;
+
   useEffect(() => {
     loadData();
   }, []);
 
+  useEffect(() => {
+    loadModulosPage();
+  }, [modulosPage]);
+
+  useEffect(() => {
+    loadSubcategoriasPage();
+  }, [subcatsPage]);
+
   async function loadData() {
-    const [modulosRes, subcategoriasRes] = await Promise.all([
-      fetch('/api/admin/modulos?tipo=modulos'),
-      fetch('/api/admin/modulos?tipo=subcategorias'),
-    ]);
-    const modulosData = await modulosRes.json();
-    const subcategoriasData = await subcategoriasRes.json();
-    if (modulosData.data) setModulos(modulosData.data);
-    if (subcategoriasData.data) setSubcategorias(subcategoriasData.data);
+    loadModulosPage();
+    loadSubcategoriasPage();
     setLoading(false);
+  }
+
+  async function loadModulosPage() {
+    const res = await fetch(`/api/admin/modulos?tipo=modulos&page=${modulosPage}&limit=${modulosLimit}`);
+    const data = await res.json();
+    if (data.data) setModulos(data.data);
+    if (data.total !== undefined) setModulosTotal(data.total);
+  }
+
+  async function loadSubcategoriasPage() {
+    const res = await fetch(`/api/admin/modulos?tipo=subcategorias&page=${subcatsPage}&limit=${subcatsLimit}`);
+    const data = await res.json();
+    if (data.data) setSubcategorias(data.data);
+    if (data.total !== undefined) setSubcatsTotal(data.total);
   }
 
   const getSubcategoriasByModulo = (moduloId: string) => {
@@ -128,6 +151,12 @@ export default function ModulosAdmin() {
                 </div>
               )}
             </div>
+
+            <PaginationControls
+              currentPage={modulosPage}
+              totalPages={Math.ceil(modulosTotal / modulosLimit)}
+              onPageChange={setModulosPage}
+            />
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-md">
@@ -179,6 +208,12 @@ export default function ModulosAdmin() {
                 <p className="text-gray-500 text-center py-4">No hay subcategorías</p>
               )}
             </div>
+
+            <PaginationControls
+              currentPage={subcatsPage}
+              totalPages={Math.ceil(subcatsTotal / subcatsLimit)}
+              onPageChange={setSubcatsPage}
+            />
           </div>
         </div>
       </main>
@@ -203,6 +238,84 @@ export default function ModulosAdmin() {
       )}
     </div>
     </AdminProtected>
+  );
+}
+
+function PaginationControls({ currentPage, totalPages, onPageChange }: { 
+  currentPage: number; 
+  totalPages: number; 
+  onPageChange: (page: number) => void;
+}) {
+  if (totalPages <= 1) return null;
+
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
+    const delta = 2;
+
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+
+      if (currentPage > 3) {
+        pages.push('...');
+      }
+
+      const start = Math.max(2, currentPage - delta);
+      const end = Math.min(totalPages - 1, currentPage + delta);
+
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pages.push('...');
+      }
+
+      pages.push(totalPages);
+    }
+
+    return pages;
+  };
+
+  return (
+    <div className="mt-6 flex flex-wrap justify-center items-center gap-2">
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="px-3 py-1.5 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-40 disabled:cursor-not-allowed text-sm font-medium transition-colors"
+      >
+        ← Anterior
+      </button>
+
+      <div className="flex items-center gap-1">
+        {getPageNumbers().map((page, idx) => (
+          typeof page === 'number' ? (
+            <button
+              key={idx}
+              onClick={() => onPageChange(page)}
+              className={`min-w-[36px] h-8 rounded-lg font-medium text-sm transition-colors ${
+                currentPage === page
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-blue-100'
+              }`}
+            >
+              {page}
+            </button>
+          ) : (
+            <span key={idx} className="px-1 text-gray-400">...</span>
+          )
+        ))}
+      </div>
+
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="px-3 py-1.5 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-40 disabled:cursor-not-allowed text-sm font-medium transition-colors"
+      >
+        Siguiente →
+      </button>
+    </div>
   );
 }
 

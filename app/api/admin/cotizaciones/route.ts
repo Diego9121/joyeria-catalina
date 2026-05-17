@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+export const dynamic = 'force-dynamic';
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
@@ -26,7 +28,7 @@ export async function PUT(request: Request) {
   try {
     const { id, estado, productos, actualizarStock } = await request.json();
 
-    if (actualizarStock && productos) {
+    if (actualizarStock && estado === 'RECHAZADO' && productos) {
       for (const producto of productos) {
         const { data: productoActual } = await supabaseAdmin
           .from('productos')

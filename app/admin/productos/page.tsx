@@ -271,29 +271,50 @@ function ProductosContent() {
         </div>
 
         {totalPages > 1 && (
-          <div className="mt-6 flex flex-col sm:flex-row justify-center items-center gap-3">
+          <div className="mt-6 flex flex-wrap justify-center items-center gap-2">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
               className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-medium"
             >
-              Anterior
+              ← Anterior
             </button>
             
-            <div className="flex items-center gap-2">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                <button
-                  key={page}
-                  onClick={() => handlePageChange(page)}
-                  className={`w-10 h-10 rounded-lg font-medium transition-colors ${
-                    currentPage === page
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-blue-100'
-                  }`}
-                >
-                  {page}
-                </button>
-              ))}
+            <div className="flex items-center gap-1">
+              {(() => {
+                const pages: (number | string)[] = [];
+                const delta = 2;
+
+                if (totalPages <= 7) {
+                  for (let i = 1; i <= totalPages; i++) pages.push(i);
+                } else {
+                  pages.push(1);
+                  if (currentPage > 3) pages.push('...');
+                  const start = Math.max(2, currentPage - delta);
+                  const end = Math.min(totalPages - 1, currentPage + delta);
+                  for (let i = start; i <= end; i++) pages.push(i);
+                  if (currentPage < totalPages - 2) pages.push('...');
+                  pages.push(totalPages);
+                }
+
+                return pages.map((page, idx) => (
+                  typeof page === 'number' ? (
+                    <button
+                      key={idx}
+                      onClick={() => handlePageChange(page)}
+                      className={`min-w-[40px] h-10 rounded-lg font-medium transition-colors ${
+                        currentPage === page
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-100 text-gray-700 hover:bg-blue-100'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ) : (
+                    <span key={idx} className="px-2 text-gray-400">...</span>
+                  )
+                ));
+              })()}
             </div>
 
             <button
@@ -301,7 +322,7 @@ function ProductosContent() {
               disabled={currentPage === totalPages}
               className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-medium"
             >
-              Siguiente
+              Siguiente →
             </button>
           </div>
         )}
