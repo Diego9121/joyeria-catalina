@@ -15,6 +15,12 @@ console.log('NEXT_PUBLIC_SUPABASE_URL:', vars.NEXT_PUBLIC_SUPABASE_URL);
 console.log('NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME:', vars.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
 
 try {
+  // First run npm install with legacy peer deps
+  console.log('Installing dependencies...');
+  execSync('npm install --legacy-peer-deps', { stdio: 'inherit', env, shell: true });
+
+  // Then run opennextjs-cloudflare build with the flag
+  console.log('Running OpenNext build...');
   execSync('npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion', { stdio: 'inherit', env, shell: true });
   console.log('Build completed successfully!');
 } catch (error) {
