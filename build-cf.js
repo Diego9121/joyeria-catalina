@@ -21,7 +21,7 @@ try {
 
   // Then run opennextjs-cloudflare build with the flag
   console.log('Running OpenNext build...');
-  execSync('npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion', { stdio: 'inherit', env, shell: true });
+  execSync('npx opennextjs-cloudflare build', { stdio: 'inherit', env, shell: true });
   console.log('Build completed successfully!');
 } catch (error) {
   console.error('Build failed:', error.message);
