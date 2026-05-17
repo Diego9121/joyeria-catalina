@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "build:cf": "node build-cf.js",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+    "preview": "next build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

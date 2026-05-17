@@ -19,9 +19,9 @@ try {
   console.log('Installing dependencies...');
   execSync('npm install --legacy-peer-deps', { stdio: 'inherit', env, shell: true });
 
-  // Then run opennextjs-cloudflare build with the flag
-  console.log('Running OpenNext build...');
-  execSync('npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion', { stdio: 'inherit', env, shell: true });
+  // Run next build with unsupported version flag
+  console.log('Running Next.js build...');
+  execSync('npx next build --dangerouslyUseUnsupportedNextVersion', { stdio: 'inherit', env, shell: true });
   console.log('Build completed successfully!');
 } catch (error) {
   console.error('Build failed:', error.message);

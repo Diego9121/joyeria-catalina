@@ -1,10 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "joyeria-catalina",
-  "main": ".open-next/worker.js",
+  "main": ".next/server.js",
   "compatibility_date": "2024-09-23",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "directory": ".open-next/assets"
+    "directory": ".next"
   }
 }
