@@ -3247,27 +3247,27 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/api/admin/cotizaciones/route_client-reference-manifest.js": {
-      "bytes": 11187,
+      "bytes": 11313,
       "imports": [],
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/api/admin/productos/route_client-reference-manifest.js": {
-      "bytes": 11181,
+      "bytes": 11307,
       "imports": [],
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/api/admin/modulos/route_client-reference-manifest.js": {
-      "bytes": 11177,
+      "bytes": 11303,
       "imports": [],
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/api/admin/login/route_client-reference-manifest.js": {
-      "bytes": 11173,
+      "bytes": 11299,
       "imports": [],
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/server/load-manifest.external.js": {
-      "bytes": 118411,
+      "bytes": 119731,
       "imports": [
         {
           "path": "path",
@@ -3292,22 +3292,22 @@
         {
           "path": ".open-next/server-functions/default/.next/server/app/api/admin/cotizaciones/route_client-reference-manifest.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\cotizaciones\\route_client-reference-manifest.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\cotizaciones\\route_client-reference-manifest.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/api/admin/productos/route_client-reference-manifest.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\productos\\route_client-reference-manifest.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\productos\\route_client-reference-manifest.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/api/admin/modulos/route_client-reference-manifest.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\modulos\\route_client-reference-manifest.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\modulos\\route_client-reference-manifest.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/api/admin/login/route_client-reference-manifest.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\login\\route_client-reference-manifest.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\login\\route_client-reference-manifest.js"
         }
       ],
       "format": "cjs"
@@ -3534,7 +3534,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js": {
-      "bytes": 518792,
+      "bytes": 518801,
       "imports": [
         {
           "path": "url",
@@ -3654,17 +3654,17 @@
         {
           "path": ".open-next/server-functions/default/composable-cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/composable-cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/cache.cjs"
         }
       ],
       "format": "cjs"
@@ -3692,7 +3692,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js": {
-      "bytes": 161487,
+      "bytes": 161496,
       "imports": [
         {
           "path": "url",
@@ -3777,17 +3777,17 @@
         {
           "path": ".open-next/server-functions/default/composable-cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/composable-cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/server/app-render/after-task-async-storage.external.js",
@@ -3822,11 +3822,6 @@
       "imports": [],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/chunks/35.js": {
-      "bytes": 9144,
-      "imports": [],
-      "format": "cjs"
-    },
     ".open-next/server-functions/default/.next/server/chunks/512.js": {
       "bytes": 233747,
       "imports": [],
@@ -3849,7 +3844,12 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/chunks/825.js": {
-      "bytes": 296926,
+      "bytes": 296962,
+      "imports": [],
+      "format": "cjs"
+    },
+    ".open-next/server-functions/default/.next/server/chunks/897.js": {
+      "bytes": 9157,
       "imports": [],
       "format": "cjs"
     },
@@ -3859,7 +3859,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/webpack-runtime.js": {
-      "bytes": 2044,
+      "bytes": 2046,
       "imports": [
         {
           "path": ".open-next/server-functions/default/.next/server/chunks/12.js",
@@ -3875,11 +3875,6 @@
           "path": ".open-next/server-functions/default/.next/server/chunks/331.js",
           "kind": "require-call",
           "original": "./chunks/331.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/35.js",
-          "kind": "require-call",
-          "original": "./chunks/35.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/chunks/512.js",
@@ -3902,6 +3897,11 @@
           "original": "./chunks/825.js"
         },
         {
+          "path": ".open-next/server-functions/default/.next/server/chunks/897.js",
+          "kind": "require-call",
+          "original": "./chunks/897.js"
+        },
+        {
           "path": ".open-next/server-functions/default/.next/server/chunks/960.js",
           "kind": "require-call",
           "original": "./chunks/960.js"
@@ -3910,7 +3910,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/api/admin/cotizaciones/route.js": {
-      "bytes": 7330,
+      "bytes": 7335,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -3961,7 +3961,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/admin/productos/nuevo/page.js": {
-      "bytes": 27608,
+      "bytes": 27629,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4027,7 +4027,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/api/admin/productos/route.js": {
-      "bytes": 9038,
+      "bytes": 9041,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4078,7 +4078,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/admin/productos/[id]/page.js": {
-      "bytes": 28102,
+      "bytes": 28124,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4144,7 +4144,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/api/admin/modulos/route.js": {
-      "bytes": 9444,
+      "bytes": 9447,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4195,7 +4195,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/admin/cotizaciones/page.js": {
-      "bytes": 36645,
+      "bytes": 36677,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4261,7 +4261,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/api/admin/login/route.js": {
-      "bytes": 7504,
+      "bytes": 7509,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4311,8 +4311,8 @@
       ],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/admin/productos/page.js": {
-      "bytes": 49888,
+    ".open-next/server-functions/default/.next/server/app/admin/dashboard/page.js": {
+      "bytes": 37355,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4377,8 +4377,8 @@
       ],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/admin/dashboard/page.js": {
-      "bytes": 37323,
+    ".open-next/server-functions/default/.next/server/app/admin/productos/page.js": {
+      "bytes": 49921,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4444,7 +4444,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/admin/modulos/page.js": {
-      "bytes": 34965,
+      "bytes": 34987,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4510,7 +4510,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/modulo/[id]/page.js": {
-      "bytes": 61762,
+      "bytes": 61784,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4576,7 +4576,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/_not-found/page.js": {
-      "bytes": 23237,
+      "bytes": 23258,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4642,7 +4642,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/carrito/page.js": {
-      "bytes": 33935,
+      "bytes": 33957,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4834,7 +4834,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/compiled/next-server/pages.runtime.prod.js": {
-      "bytes": 129443,
+      "bytes": 129452,
       "imports": [
         {
           "path": "url",
@@ -4934,17 +4934,17 @@
         {
           "path": ".open-next/server-functions/default/composable-cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/composable-cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/node_modules/react/jsx-runtime.js",
@@ -4996,7 +4996,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/admin/page.js": {
-      "bytes": 31942,
+      "bytes": 31972,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -5119,7 +5119,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/page.js": {
-      "bytes": 30560,
+      "bytes": 30582,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -5185,7 +5185,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/server/require.js": {
-      "bytes": 26956,
+      "bytes": 27010,
       "imports": [
         {
           "path": "path",
@@ -5235,92 +5235,92 @@
         {
           "path": ".open-next/server-functions/default/.next/server/app/api/admin/cotizaciones/route.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\cotizaciones\\route.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\cotizaciones\\route.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/admin/productos/nuevo/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\productos\\nuevo\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\productos\\nuevo\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/api/admin/productos/route.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\productos\\route.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\productos\\route.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/admin/productos/[id]/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\productos\\[id]\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\productos\\[id]\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/api/admin/modulos/route.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\modulos\\route.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\modulos\\route.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/admin/cotizaciones/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\cotizaciones\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\cotizaciones\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/api/admin/login/route.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\login\\route.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/admin/productos/page.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\productos\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\login\\route.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/admin/dashboard/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\dashboard\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\dashboard\\page.js"
+        },
+        {
+          "path": ".open-next/server-functions/default/.next/server/app/admin/productos/page.js",
+          "kind": "require-call",
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\productos\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/admin/modulos/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\modulos\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\modulos\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/modulo/[id]/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\modulo\\[id]\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\modulo\\[id]\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/_not-found/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\_not-found\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\_not-found\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/carrito/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\carrito\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\carrito\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/pages/_document.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_document.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_document.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/admin/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/pages/_error.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_error.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_error.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/pages/_app.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_app.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_app.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/page.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\page.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\app\\page.js"
         }
       ],
       "format": "cjs"
@@ -5807,22 +5807,22 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/server/lib/module-loader/node-module-loader.js": {
-      "bytes": 1007,
+      "bytes": 1016,
       "imports": [
         {
           "path": ".open-next/server-functions/default/.next/server/pages/_document.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_document.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_document.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/pages/_error.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_error.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_error.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/pages/_app.js",
           "kind": "require-call",
-          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-bella-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_app.js"
+          "original": "C:\\Users\\Ryzen5\\Desktop\\pag_finales\\joyeria-catalina-cloudflare\\.open-next\\server-functions\\default\\.next\\server\\pages\\_app.js"
         }
       ],
       "format": "cjs"
@@ -5901,7 +5901,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/server/next-server.js": {
-      "bytes": 52435,
+      "bytes": 52444,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/server/node-environment.js",
@@ -6206,17 +6206,17 @@
         {
           "path": ".open-next/server-functions/default/composable-cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/composable-cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/composable-cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/cache.cjs",
           "kind": "require-call",
-          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-bella-cloudflare/.open-next/server-functions/default/cache.cjs"
+          "original": "C:/Users/Ryzen5/Desktop/pag_finales/joyeria-catalina-cloudflare/.open-next/server-functions/default/cache.cjs"
         },
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/experimental/testmode/server.js",
@@ -6232,7 +6232,7 @@
       "format": "esm"
     },
     ".open-next/server-functions/default/index.mjs": {
-      "bytes": 87790,
+      "bytes": 87796,
       "imports": [
         {
           "path": "node:module",
@@ -7412,19 +7412,19 @@
           "bytesInOutput": 586
         },
         ".open-next/server-functions/default/.next/server/app/api/admin/cotizaciones/route_client-reference-manifest.js": {
-          "bytesInOutput": 10278
+          "bytesInOutput": 10404
         },
         ".open-next/server-functions/default/.next/server/app/api/admin/productos/route_client-reference-manifest.js": {
-          "bytesInOutput": 10270
+          "bytesInOutput": 10396
         },
         ".open-next/server-functions/default/.next/server/app/api/admin/modulos/route_client-reference-manifest.js": {
-          "bytesInOutput": 10264
+          "bytesInOutput": 10390
         },
         ".open-next/server-functions/default/.next/server/app/api/admin/login/route_client-reference-manifest.js": {
-          "bytesInOutput": 10258
+          "bytesInOutput": 10384
         },
         ".open-next/server-functions/default/node_modules/next/dist/server/load-manifest.external.js": {
-          "bytesInOutput": 102051
+          "bytesInOutput": 103359
         },
         ".open-next/server-functions/default/node_modules/next/dist/server/app-render/action-async-storage-instance.js": {
           "bytesInOutput": 501
@@ -7498,9 +7498,6 @@
         ".open-next/server-functions/default/.next/server/chunks/331.js": {
           "bytesInOutput": 131261
         },
-        ".open-next/server-functions/default/.next/server/chunks/35.js": {
-          "bytesInOutput": 9358
-        },
         ".open-next/server-functions/default/.next/server/chunks/512.js": {
           "bytesInOutput": 244149
         },
@@ -7511,52 +7508,55 @@
           "bytesInOutput": 71394
         },
         ".open-next/server-functions/default/.next/server/chunks/825.js": {
-          "bytesInOutput": 308900
+          "bytesInOutput": 308936
+        },
+        ".open-next/server-functions/default/.next/server/chunks/897.js": {
+          "bytesInOutput": 9372
         },
         ".open-next/server-functions/default/.next/server/chunks/960.js": {
           "bytesInOutput": 8966
         },
         ".open-next/server-functions/default/.next/server/webpack-runtime.js": {
-          "bytesInOutput": 1973
+          "bytesInOutput": 1974
         },
         ".open-next/server-functions/default/.next/server/app/api/admin/cotizaciones/route.js": {
-          "bytesInOutput": 7415
+          "bytesInOutput": 7420
         },
         ".open-next/server-functions/default/.next/server/app/admin/productos/nuevo/page.js": {
-          "bytesInOutput": 27873
+          "bytesInOutput": 27894
         },
         ".open-next/server-functions/default/.next/server/app/api/admin/productos/route.js": {
-          "bytesInOutput": 9180
+          "bytesInOutput": 9183
         },
         ".open-next/server-functions/default/.next/server/app/admin/productos/[id]/page.js": {
-          "bytesInOutput": 28376
+          "bytesInOutput": 28398
         },
         ".open-next/server-functions/default/.next/server/app/api/admin/modulos/route.js": {
-          "bytesInOutput": 9595
+          "bytesInOutput": 9598
         },
         ".open-next/server-functions/default/.next/server/app/admin/cotizaciones/page.js": {
-          "bytesInOutput": 37139
+          "bytesInOutput": 37171
         },
         ".open-next/server-functions/default/.next/server/app/api/admin/login/route.js": {
-          "bytesInOutput": 7578
-        },
-        ".open-next/server-functions/default/.next/server/app/admin/productos/page.js": {
-          "bytesInOutput": 50679
+          "bytesInOutput": 7583
         },
         ".open-next/server-functions/default/.next/server/app/admin/dashboard/page.js": {
-          "bytesInOutput": 37736
+          "bytesInOutput": 37768
+        },
+        ".open-next/server-functions/default/.next/server/app/admin/productos/page.js": {
+          "bytesInOutput": 50712
         },
         ".open-next/server-functions/default/.next/server/app/admin/modulos/page.js": {
-          "bytesInOutput": 35414
+          "bytesInOutput": 35436
         },
         ".open-next/server-functions/default/.next/server/app/modulo/[id]/page.js": {
-          "bytesInOutput": 63633
+          "bytesInOutput": 63655
         },
         ".open-next/server-functions/default/.next/server/app/_not-found/page.js": {
-          "bytesInOutput": 23552
+          "bytesInOutput": 23573
         },
         ".open-next/server-functions/default/.next/server/app/carrito/page.js": {
-          "bytesInOutput": 34777
+          "bytesInOutput": 34799
         },
         ".open-next/server-functions/default/node_modules/react/cjs/react-jsx-runtime.production.js": {
           "bytesInOutput": 740
@@ -7601,7 +7601,7 @@
           "bytesInOutput": 455
         },
         ".open-next/server-functions/default/.next/server/app/admin/page.js": {
-          "bytesInOutput": 32323
+          "bytesInOutput": 32353
         },
         ".open-next/server-functions/default/.next/server/pages/_error.js": {
           "bytesInOutput": 83188
@@ -7610,7 +7610,7 @@
           "bytesInOutput": 3581
         },
         ".open-next/server-functions/default/.next/server/app/page.js": {
-          "bytesInOutput": 30768
+          "bytesInOutput": 30790
         },
         ".open-next/server-functions/default/node_modules/next/dist/server/require.js": {
           "bytesInOutput": 21469
@@ -7721,10 +7721,10 @@
           "bytesInOutput": 5059
         },
         ".open-next/server-functions/default/index.mjs": {
-          "bytesInOutput": 61153
+          "bytesInOutput": 61159
         }
       },
-      "bytes": 3640149
+      "bytes": 3642313
     }
   }
 }
