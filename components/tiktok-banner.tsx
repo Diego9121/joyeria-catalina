@@ -15,7 +15,7 @@ export function TikTokBanner() {
           ¡Síguenos en TikTok!
         </span>
         <a
-          href="https://www.tiktok.com/@bisuteria793"
+          href="https://www.tiktok.com/@www.tiktok.com.catalina"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 bg-gold text-charcoal px-4 py-1.5 rounded-full font-bold text-xs hover:bg-gold-dark transition-colors shadow-sm"

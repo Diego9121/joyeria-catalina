@@ -26,7 +26,7 @@ export function Footer() {
             <span className="text-white text-sm font-medium">WhatsApp</span>
           </a>
           <a 
-            href="https://www.tiktok.com/@bisuteria793" 
+            href="https://www.tiktok.com/@www.tiktok.com.catalina" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors"
