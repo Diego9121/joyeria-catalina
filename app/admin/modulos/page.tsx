@@ -239,7 +239,7 @@ function ModuloModal({ modulo, onClose, onSave }: { modulo: Modulo | null; onClo
     const file = new File([croppedBlob], 'modulo-image.jpg', { type: 'image/jpeg' });
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'joyeria_bella');
+    formData.append('upload_preset', 'joyeria_catalina');
 
     try {
       const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
