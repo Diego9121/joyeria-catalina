@@ -18,7 +18,7 @@
     "cloudinary": "^2.2.0",
     "clsx": "^2.1.1",
     "lucide-react": "^1.14.0",
-    "next": "15.2.4",
+    "next": "15.5.18",
     "pdfkit": "^0.18.0",
     "pdfmake": "^0.3.8",
     "react": "19.0.0",
@@ -42,5 +42,8 @@
   "overrides": {
     "react": "19.0.0",
     "react-dom": "19.0.0"
+  },
+  "engines": {
+    "node": ">=18.17.0"
   }
 }
