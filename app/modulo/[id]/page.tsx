@@ -134,9 +134,9 @@ export default function SubcategoriaPage() {
       <footer className="bg-charcoal text-white py-10 mt-auto">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-lg">
-            <span className="text-white text-xl font-bold">JB</span>
+            <span className="text-white text-xl font-bold">JC</span>
           </div>
-          <p className="font-bold text-xl text-white tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Bella</p>
+          <p className="font-bold text-xl text-white tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Catalina</p>
           <p className="text-gray-400 mt-2">Belleza que brilla, calidad que perdura</p>
         </div>
       </footer>

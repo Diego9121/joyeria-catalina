@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export function WhatsAppButton({ phone = "59174913218" }: { phone?: string }) {
+export function WhatsAppButton({ phone = "73394005" }: { phone?: string }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

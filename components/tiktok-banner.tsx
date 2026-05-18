@@ -20,7 +20,7 @@ export function TikTokBanner() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 bg-gold text-charcoal px-4 py-1.5 rounded-full font-bold text-xs hover:bg-gold-dark transition-colors shadow-sm"
         >
-          <span>Joyería Bella</span>
+          <span>Joyería Catalina</span>
           <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
             <path d="M19 15l-6 6-1.5-1.5L14 17H5V5h1.5l5.5 5.5L10 13l6-6z" />
           </svg>

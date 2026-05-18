@@ -120,7 +120,7 @@ export const DEPARTAMENTOS_BOLIVIA = [
   }
 ];
 
-export const WHATSAPP_ADMIN = process.env.NEXT_PUBLIC_WHATSAPP_ADMIN || '59174913218';
+export const WHATSAPP_ADMIN = process.env.NEXT_PUBLIC_WHATSAPP_ADMIN || '73394005';
 
 export function formatCurrency(amount: number): string {
   return `${amount.toFixed(2)} Bs`;

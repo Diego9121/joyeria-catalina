@@ -1,4 +1,4 @@
-# Joyería Bella - Documentación del Proyecto
+# Joyería Catalina - Documentación del Proyecto
 
 ## Stack Tecnológico
 

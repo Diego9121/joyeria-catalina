@@ -7,9 +7,9 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-8">
           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-lg">
-            <span className="text-white text-2xl font-bold">JB</span>
+            <span className="text-white text-2xl font-bold">JC</span>
           </div>
-          <h3 className="text-3xl font-bold text-white tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Bella</h3>
+          <h3 className="text-3xl font-bold text-white tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Catalina</h3>
           <p className="text-gray-400">Belleza que brilla, calidad que perdura</p>
         </div>
         
@@ -40,7 +40,7 @@ export function Footer() {
         
         <div className="border-t border-gray-700 pt-6 text-center">
           <p className="text-gray-500 text-sm tracking-wide" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>
-            © 2026 Joyería Bella. Todos los derechos reservados.
+            © 2026 Joyería Catalina. Todos los derechos reservados.
           </p>
         </div>
       </div>

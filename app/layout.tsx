@@ -11,27 +11,27 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Joyería Bella - Joyería Exclusiva en Bolivia",
+  title: "Joyería Catalina - Joyería Exclusiva en Bolivia",
   description: "Encuentra piezas únicas de joyería artesanal. Aretes, collares, pulseras, anillos y conjuntos en oro y plata. Envíos a todo Bolivia.",
   keywords: ["joyería", "aretes", "collares", "pulseras", "anillos", "bolivia", "joyería artesanal", "regalo"],
-  authors: [{ name: "Joyería Bella" }],
+  authors: [{ name: "Joyería Catalina" }],
   openGraph: {
-    title: "Joyería Bella - Joyería Exclusiva",
+    title: "Joyería Catalina - Joyería Exclusiva",
     description: "Piezas únicas diseñadas para brillar en cada momento especial. Envíos a todo Bolivia.",
-    url: "https://joyeriabella.com",
-    siteName: "Joyería Bella",
+    url: "https://joyeria-catalina.pages.dev",
+    siteName: "Joyería Catalina",
     locale: "es_BO",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Joyería Bella - Joyería Exclusiva",
+    title: "Joyería Catalina - Joyería Exclusiva",
     description: "Piezas únicas de joyería artesanal en Bolivia.",
   },
   icons: {
     icon: [
       {
-        url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%23D4AF37' width='32' height='32' rx='6'/><text x='16' y='22' text-anchor='middle' font-family='Arial' font-size='14' font-weight='800' fill='white'>JB</text></svg>",
+        url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%23D4AF37' width='32' height='32' rx='6'/><text x='16' y='22' text-anchor='middle' font-family='Arial' font-size='14' font-weight='800' fill='white'>JC</text></svg>",
         type: "image/svg+xml",
       },
     ],
