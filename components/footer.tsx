@@ -1,12 +1,12 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { WHATSAPP_ADMIN } from '@/lib/constants';
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal text-white py-12 mt-auto">
+    <footer className="bg-vino text-white py-12 mt-auto">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-lg">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-vino to-vino-dark flex items-center justify-center shadow-lg">
             <span className="text-white text-2xl font-bold">JC</span>
           </div>
           <h3 className="text-3xl font-bold text-white tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Catalina</h3>

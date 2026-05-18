@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -224,18 +224,18 @@ export default function CarritoPage() {
 
 const formatPrecio = (precio: number) => `${precio.toFixed(2)} Bs`;
 
-    let mensajeTexto = `────────────────────
-JOYERÍA BELLA - COTIZACIÓN
-────────────────────
-DATOS DEL CLIENTE
-────────────────────
+    let mensajeTexto = `━━━━━━━━━━━━━━━━━━━━━━━━━
+ JOYERÍA CATALINA - COTIZACIÓN
+━━━━━━━━━━━━━━━━━━━━━━━━━
+ DATOS DEL CLIENTE
+━━━━━━━━━━━━━━━━━━━━━━━━━
 Nombre:    ${formData.nombre}
 Celular:   ${formData.celular}
 Ubicación: ${formData.departamento} - ${formData.provincia}
 Notas:     
-────────────────────
-PRODUCTOS
-────────────────────`;
+━━━━━━━━━━━━━━━━━━━━━━━━━
+ PRODUCTOS
+━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
     Object.values(groupedByModulo).forEach((modulo) => {
       const subcatText = modulo.productos.length > 0 && modulo.productos[0].subcategoria !== 'Sin subcategoría' 
@@ -248,12 +248,30 @@ PRODUCTOS
       mensajeTexto += `\n     ▸ Subtotal: ${formatPrecio(modulo.subtotal)}`;
     });
 
-    mensajeTexto += `\n────────────────────
+    mensajeTexto += `\n━━━━━━━━━━━━━━━━━━━━━━━━━
         💰 TOTAL: ${formatPrecio(totalRounded)}
-────────────────────
+━━━━━━━━━━━━━━━━━━━━━━━━━
 ⏰ IMPORTANTE: Esta cotización tiene validez de 15 Minutos.
 Después de este tiempo, los artículos volverán a estar disponibles.
-────────────────────`;
+━━━━━━━━━━━━━━━━━━━━━━━━━`;
+
+    Object.values(groupedByModulo).forEach((modulo) => {
+      const subcatText = modulo.productos.length > 0 && modulo.productos[0].subcategoria !== 'Sin subcategorÃ­a' 
+        ? ` (${modulo.productos[0].subcategoria})` 
+        : '';
+      mensajeTexto += `\nðŸ“¿ ${modulo.nombre.toUpperCase()}${subcatText}`;
+      modulo.productos.forEach(p => {
+        mensajeTexto += `\n     ${p.codigo}    x${p.cantidad}    ${formatPrecio(p.subtotal)}`;
+      });
+      mensajeTexto += `\n     â–¸ Subtotal: ${formatPrecio(modulo.subtotal)}`;
+    });
+
+    mensajeTexto += `\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        ðŸ’° TOTAL: ${formatPrecio(totalRounded)}
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+â° IMPORTANTE: Esta cotizaciÃ³n tiene validez de 15 Minutos.
+DespuÃ©s de este tiempo, los artÃ­culos volverÃ¡n a estar disponibles.
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€`;
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const whatsappUrl = isMobile 
@@ -286,7 +304,7 @@ Después de este tiempo, los artículos volverán a estar disponibles.
     : [];
 
   if (loading) {
-    return <div className="min-h-screen bg-white flex items-center justify-center text-charcoal">Cargando carrito...</div>;
+    return <div className="min-h-screen bg-white flex items-center justify-center text-negro">Cargando carrito...</div>;
   }
 
   if (productos.length === 0) {
@@ -299,9 +317,9 @@ Después de este tiempo, los artículos volverán a estar disponibles.
             <path d="M16 10a4 4 0 01-8 0" />
           </svg>
         </div>
-        <h1 className="text-2xl font-bold text-charcoal mb-3">Tu carrito está vacío</h1>
+        <h1 className="text-2xl font-bold text-negro mb-3">Tu carrito está vacío</h1>
         <p className="text-gray-500 mb-8 text-center">Explora nuestras categorías para agregar productos</p>
-        <Link href="/" className="px-8 py-3 bg-gold text-white rounded-full font-semibold hover:bg-gold-dark transition">
+        <Link href="/" className="px-8 py-3 bg-vino text-white rounded-full font-semibold hover:bg-vino-dark transition">
           Explorar categorías
         </Link>
       </div>
@@ -316,10 +334,10 @@ Después de este tiempo, los artículos volverán a estar disponibles.
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h1 className="text-2xl font-bold text-charcoal mb-3">¡Cotización Enviada!</h1>
+        <h1 className="text-2xl font-bold text-negro mb-3">¡Cotización Enviada!</h1>
         <p className="text-gray-500 mb-2 text-center">Tu mensaje se ha abierto en WhatsApp</p>
         <p className="text-gray-400 text-sm mb-8 text-center">Envía el mensaje para completar tu solicitud</p>
-        <Link href="/" className="px-8 py-3 bg-gold text-white rounded-full font-semibold hover:bg-gold-dark transition">
+        <Link href="/" className="px-8 py-3 bg-vino text-white rounded-full font-semibold hover:bg-vino-dark transition">
           Volver al inicio
         </Link>
       </div>
@@ -336,7 +354,7 @@ Después de este tiempo, los artículos volverán a estar disponibles.
             </svg>
             <span>Continuar Comprando</span>
           </Link>
-          <span className="bg-gold text-white px-4 py-2 rounded-full font-semibold text-sm">
+          <span className="bg-vino text-white px-4 py-2 rounded-full font-semibold text-sm">
             {totalItems} producto{totalItems !== 1 ? 's' : ''}
           </span>
         </div>
@@ -344,7 +362,7 @@ Después de este tiempo, los artículos volverán a estar disponibles.
 
       <main className="max-w-4xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-charcoal">Carrito de Compras</h1>
+          <h1 className="text-2xl font-bold text-negro">Carrito de Compras</h1>
           <button onClick={clearCart} className="text-red-500 hover:text-red-600 text-sm font-medium transition-colors">
             Vaciar carrito
           </button>
@@ -359,23 +377,23 @@ Después de este tiempo, los artículos volverán a estar disponibles.
             return (
               <div key={producto.id} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 flex flex-wrap gap-4 items-center">
                 <div className="flex-1 min-w-[200px]">
-                  <span className="text-charcoal font-semibold text-sm uppercase">{producto.modulo_nombre}{producto.subcategoria_nombre ? ` (${producto.subcategoria_nombre})` : ''}</span>
-                  <span className="text-gold font-bold text-sm block mt-1">{producto.codigo}</span>
+                  <span className="text-negro font-semibold text-sm uppercase">{producto.modulo_nombre}{producto.subcategoria_nombre ? ` (${producto.subcategoria_nombre})` : ''}</span>
+                  <span className="text-vino font-bold text-sm block mt-1">{producto.codigo}</span>
                   <div className="flex items-center gap-3 mt-2">
                     {producto.precio_descuento ? (
                       <>
                         <span className="text-gray-400 line-through text-sm">{formatCurrency(producto.precio)}</span>
-                        <span className="text-gold font-bold">{formatCurrency(producto.precio_descuento)}</span>
+                        <span className="text-vino font-bold">{formatCurrency(producto.precio_descuento)}</span>
                       </>
                     ) : (
-                      <span className="text-lg font-bold text-charcoal">{formatCurrency(producto.precio)}</span>
+                      <span className="text-lg font-bold text-negro">{formatCurrency(producto.precio)}</span>
                     )}
                     <span className="text-gray-400 text-sm">c/u</span>
                   </div>
                 </div>
-                <span className="font-bold text-xl text-charcoal">x{cantidad}</span>
+                <span className="font-bold text-xl text-negro">x{cantidad}</span>
                 <div className="text-right min-w-[100px]">
-                  <span className="text-xl font-bold text-charcoal">{formatCurrency(subtotal)}</span>
+                  <span className="text-xl font-bold text-negro">{formatCurrency(subtotal)}</span>
                 </div>
               </div>
             );
@@ -384,8 +402,8 @@ Después de este tiempo, los artículos volverán a estar disponibles.
 
         <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-8">
           <div className="flex justify-between items-center">
-            <span className="text-2xl font-bold text-charcoal">Total:</span>
-            <span className="text-3xl font-bold text-charcoal">{formatCurrency(roundTotalGeneral(getTotalOriginal()))}</span>
+            <span className="text-2xl font-bold text-negro">Total:</span>
+            <span className="text-3xl font-bold text-negro">{formatCurrency(roundTotalGeneral(getTotalOriginal()))}</span>
           </div>
         </div>
 
@@ -393,7 +411,7 @@ Después de este tiempo, los artículos volverán a estar disponibles.
           <button
             onClick={scrollToForm}
             disabled={productos.length === 0}
-            className="w-full py-4 text-lg font-semibold rounded-xl transition shadow-lg disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed bg-gold hover:bg-gold-dark text-white"
+            className="w-full py-4 text-lg font-semibold rounded-xl transition shadow-lg disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed bg-vino hover:bg-vino-dark text-white"
           >
             {productos.length === 0 ? 'Agrega productos al carrito' : 'Completar Cotización'}
           </button>
@@ -406,27 +424,27 @@ Después de este tiempo, los artículos volverán a estar disponibles.
               </p>
             </div>
 
-            <h2 className="text-xl font-bold text-charcoal mb-6">Datos de Envío</h2>
+            <h2 className="text-xl font-bold text-negro mb-6">Datos de Envío</h2>
 
             <div className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-charcoal mb-2">Nombre completo *</label>
+                <label className="block text-sm font-medium text-negro mb-2">Nombre completo *</label>
                 <input
                   type="text"
                   value={formData.nombre}
                   onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-gold focus:border-gold transition"
+                  className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-vino focus:border-vino transition"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-charcoal mb-2">Celular (WhatsApp) *</label>
+                <label className="block text-sm font-medium text-negro mb-2">Celular (WhatsApp) *</label>
                 <input
                   type="tel"
                   value={formData.celular}
                   onChange={(e) => setFormData({ ...formData, celular: e.target.value })}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-gold focus:border-gold transition"
+                  className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-vino focus:border-vino transition"
                   placeholder="Ej: 71123456"
                   required
                 />
@@ -434,11 +452,11 @@ Después de este tiempo, los artículos volverán a estar disponibles.
 
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-sm font-medium text-charcoal mb-2">Departamento *</label>
+                  <label className="block text-sm font-medium text-negro mb-2">Departamento *</label>
                   <select
                     value={formData.departamento}
                     onChange={(e) => setFormData({ ...formData, departamento: e.target.value })}
-                    className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-gold focus:border-gold transition"
+                    className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-vino focus:border-vino transition"
                     required
                   >
                     <option value="">Seleccionar...</option>
@@ -448,12 +466,12 @@ Después de este tiempo, los artículos volverán a estar disponibles.
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-charcoal mb-2">Destino *</label>
+                  <label className="block text-sm font-medium text-negro mb-2">Destino *</label>
                   <input
                     type="text"
                     value={formData.provincia}
                     onChange={(e) => setFormData({ ...formData, provincia: e.target.value })}
-                    className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-gold focus:border-gold transition"
+                    className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-vino focus:border-vino transition"
                     placeholder="Ej: Ciudad, Zona, Barrio..."
                     required
                   />
@@ -461,11 +479,11 @@ Después de este tiempo, los artículos volverán a estar disponibles.
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-charcoal mb-2">Notas (opcional)</label>
+                <label className="block text-sm font-medium text-negro mb-2">Notas (opcional)</label>
                 <textarea
                   value={formData.notas}
                   onChange={(e) => setFormData({ ...formData, notas: e.target.value })}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-3 h-24 focus:ring-2 focus:ring-gold focus:border-gold transition"
+                  className="w-full border border-gray-200 rounded-lg px-4 py-3 h-24 focus:ring-2 focus:ring-vino focus:border-vino transition"
                   placeholder="Indica la dirección exacta o cualquier otra indicación..."
                 />
               </div>

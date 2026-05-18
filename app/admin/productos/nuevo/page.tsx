@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -139,21 +139,21 @@ export default function NuevoProductoPage() {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-cream flex items-center justify-center text-xl text-gold">Cargando...</div>;
+    return <div className="min-h-screen bg-rosado flex items-center justify-center text-xl text-vino">Cargando...</div>;
   }
 
   return (
     <AdminProtected>
-      <div className="min-h-screen bg-cream">
-        <header className="bg-charcoal text-gold py-4 px-4 sm:px-6 shadow-lg">
+      <div className="min-h-screen bg-rosado">
+        <header className="bg-gradient-to-r from-vino to-vino-dark text-white py-4 px-4 sm:px-6 shadow-lg">
           <div className="max-w-2xl mx-auto flex justify-between items-center">
-            <Link href="/admin/productos" className="flex items-center gap-2 text-gold hover:text-white transition">
+            <Link href="/admin/productos" className="flex items-center gap-2 text-white hover:text-gray-200 transition">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               <span className="hidden sm:inline">Productos</span>
             </Link>
-            <h1 className="text-lg sm:text-xl font-bold">Nuevo Producto</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-white">Nuevo Producto</h1>
             <div className="w-10"></div>
           </div>
         </header>
@@ -173,19 +173,19 @@ export default function NuevoProductoPage() {
                 )}
               </div>
               {uploading ? (
-                <span className="text-gold text-sm">Subiendo...</span>
+                <span className="text-vino text-sm">Subiendo...</span>
               ) : (
                 <div className="flex gap-2">
                   <div>
                     <input type="file" accept="image/*" capture="environment" onChange={handleImageUpload} className="hidden" id="camera-upload-nuevo" />
                     <label htmlFor="camera-upload-nuevo" className="cursor-pointer flex items-center gap-1.5 px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 text-sm font-medium">
-                      📷 Foto
+                      ðŸ“· Foto
                     </label>
                   </div>
                   <div>
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" id="gallery-upload-nuevo" />
-                    <label htmlFor="gallery-upload-nuevo" className="cursor-pointer flex items-center gap-1.5 px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-sm font-medium">
-                      🖼️ Galería
+<label htmlFor="gallery-upload-nuevo" className="cursor-pointer flex items-center gap-1.5 px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-sm font-medium">
+                      📷 Galería
                     </label>
                   </div>
                 </div>
@@ -199,7 +199,7 @@ export default function NuevoProductoPage() {
                   <select
                     value={form.modulo_id}
                     onChange={(e) => setForm({ ...form, modulo_id: e.target.value, subcategoria_id: '' })}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gold focus:border-gold"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-vino focus:border-vino"
                     required
                   >
                     <option value="">Seleccionar...</option>
@@ -214,7 +214,7 @@ export default function NuevoProductoPage() {
                 <select
                   value={form.subcategoria_id}
                   onChange={(e) => setForm({ ...form, subcategoria_id: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gold focus:border-gold"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-vino focus:border-vino"
                   disabled={!form.modulo_id}
                 >
                   <option value="">Ninguna</option>
@@ -232,7 +232,7 @@ export default function NuevoProductoPage() {
                   type="number"
                   value={form.precio}
                   onChange={(e) => setForm({ ...form, precio: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
                   placeholder="9.50"
                   step="0.01"
                   min="0"
@@ -245,7 +245,7 @@ export default function NuevoProductoPage() {
                   type="number"
                   value={form.stock}
                   onChange={(e) => setForm({ ...form, stock: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
                   min="0"
                   required
                 />
@@ -258,7 +258,7 @@ export default function NuevoProductoPage() {
                   type="checkbox"
                   checked={form.en_liquidacion}
                   onChange={(e) => setForm({ ...form, en_liquidacion: e.target.checked, precio_descuento: '' })}
-                  className="w-5 h-5 rounded text-gold focus:ring-gold"
+                  className="w-5 h-5 rounded text-vino focus:ring-vino"
                 />
                 <span className="font-medium text-gray-700">En Liquidación</span>
               </label>
@@ -269,7 +269,7 @@ export default function NuevoProductoPage() {
                     type="number"
                     value={form.precio_descuento}
                     onChange={(e) => setForm({ ...form, precio_descuento: e.target.value })}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
                     placeholder="8.00"
                     step="0.01"
                     min="0"
@@ -281,7 +281,7 @@ export default function NuevoProductoPage() {
             <div className="bg-gray-100 rounded-lg px-4 py-3">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">Código:</span>
-                <span className="font-bold text-gold text-lg">{codigo || 'Selecciona un módulo'}</span>
+                <span className="font-bold text-vino text-lg">{codigo || 'Selecciona un módulo'}</span>
               </div>
             </div>
 
@@ -289,7 +289,7 @@ export default function NuevoProductoPage() {
               <Link href="/admin/productos" className="flex-1 border border-gray-300 py-3 rounded-lg hover:bg-gray-100 font-medium text-center">
                 Cancelar
               </Link>
-              <button type="submit" disabled={guardando} className="flex-1 bg-gold text-white py-3 rounded-lg hover:bg-gold-dark font-medium disabled:opacity-50">
+              <button type="submit" disabled={guardando} className="flex-1 bg-vino text-white py-3 rounded-lg hover:bg-vino-dark font-medium disabled:opacity-50">
                 {guardando ? 'Guardando...' : 'Crear Producto'}
               </button>
             </div>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -23,18 +23,18 @@ export default function Dashboard() {
 
   async function loadStats() {
     const [productosRes, cotizacionesRes] = await Promise.all([
-      fetch('/api/admin/productos?limit=1000').then(r => r.json()),
-      fetch('/api/admin/cotizaciones').then(r => r.json()),
+      supabase.from('productos').select('*'),
+      supabase.from('cotizaciones').select('*').order('created_at', { ascending: false })
     ]);
 
-    if (productosRes.productos) {
-      const productos = productosRes.productos;
+    if (productosRes.data) {
+      const productos = productosRes.data;
       const agotados = productos.filter(p => p.stock === 0).length;
       const stockBajo = productos.filter(p => p.stock > 0 && p.stock <= 3).length;
       
       setStats(s => ({
         ...s,
-        totalProductos: productosRes.total || productos.length,
+        totalProductos: productos.length,
         productosAgotados: agotados,
         productosStockBajo: stockBajo,
       }));
@@ -46,11 +46,11 @@ export default function Dashboard() {
       setProductosAlerta(productosEnAlerta);
     }
 
-    if (cotizacionesRes.cotizaciones) {
+    if (cotizacionesRes.data) {
       setStats(s => ({
         ...s,
-        cotizacionesPendientes: cotizacionesRes.cotizaciones.filter((c: any) => c.estado === 'PENDIENTE').length,
-        cotizacionesPagadas: cotizacionesRes.cotizaciones.filter((c: any) => c.estado === 'PAGADO').length,
+        cotizacionesPendientes: cotizacionesRes.data.filter((c: any) => c.estado === 'PENDIENTE').length,
+        cotizacionesPagadas: cotizacionesRes.data.filter((c: any) => c.estado === 'PAGADO').length,
       }));
     }
   }
@@ -62,42 +62,42 @@ export default function Dashboard() {
 
   return (
     <AdminProtected>
-      <div className="min-h-screen" style={{ backgroundColor: '#FFF8E7' }}>
-      <header className="bg-charcoal text-gold py-3 px-4 shadow-lg">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-pink-50">
+      <header className="bg-gradient-to-r from-vino to-vino-dark text-white py-3 px-4 shadow-lg">
         <div className="max-w-7xl mx-auto flex justify-between items-start gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-md">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-vino to-vino-dark flex items-center justify-center shadow-md">
               <span className="text-white text-base font-bold">JC</span>
             </div>
             <div>
-              <h1 className="text-lg font-bold text-white">Panel Admin</h1>
-              <p className="text-xs text-gold/70 tracking-widest uppercase">Joyería Catalina</p>
+              <h1 className="text-lg font-bold">Panel Admin</h1>
+              <p className="text-xs text-white/80 tracking-widest uppercase">Joyería Catalina</p>
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <Link href="/" className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-gold-light hover:text-white transition text-sm text-center font-medium">
-              Ver Catálogo
-            </Link>
-            <button onClick={logout} className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-400 hover:text-red-300 transition text-sm text-center font-medium">
-              Cerrar Sesión
-            </button>
+<Link href="/" className="px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 text-white transition text-sm text-center font-medium">
+                Ver Catálogo
+              </Link>
+              <button onClick={logout} className="px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white transition text-sm text-center font-medium">
+                Cerrar Sesión
+              </button>
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Link href="/admin/productos" className="bg-white rounded-2xl p-5 shadow-md hover:shadow-xl transition-all group border-b-4 border-gold">
+          <Link href="/admin/productos" className="bg-white rounded-2xl p-5 shadow-md hover:shadow-xl transition-all group border-b-4 border-vino">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center">
-                <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-10 h-10 rounded-xl bg-vino/10 flex items-center justify-center">
+                <svg className="w-5 h-5 text-vino" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
               </div>
-              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">Total</span>
+              <span className="text-xs font-bold text-gray-600 uppercase tracking-wide">Total</span>
             </div>
-            <div className="text-3xl font-bold text-charcoal mb-1">{stats.totalProductos}</div>
-            <div className="text-sm text-gold font-medium">Productos</div>
+            <div className="text-3xl font-bold text-negro mb-1">{stats.totalProductos}</div>
+            <div className="text-sm text-vino font-medium">Productos</div>
           </Link>
 
           <Link href="/admin/productos?filter=agotados" className="bg-white rounded-2xl p-5 shadow-md hover:shadow-xl transition-all group border-b-4 border-red-500">
@@ -107,7 +107,7 @@ export default function Dashboard() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
-              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">Alerta</span>
+              <span className="text-xs font-bold text-gray-600 uppercase tracking-wide">Alerta</span>
             </div>
             <div className="text-3xl font-bold text-red-500 mb-1">{stats.productosAgotados}</div>
             <div className="text-sm text-red-400 font-medium">Agotados</div>
@@ -120,7 +120,7 @@ export default function Dashboard() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">Stock</span>
+              <span className="text-xs font-bold text-gray-600 uppercase tracking-wide">Stock</span>
             </div>
             <div className="text-3xl font-bold text-yellow-500 mb-1">{stats.productosStockBajo}</div>
             <div className="text-sm text-yellow-500 font-medium">Stock Bajo</div>
@@ -133,7 +133,7 @@ export default function Dashboard() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
               </div>
-              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">Pendientes</span>
+              <span className="text-xs font-bold text-gray-600 uppercase tracking-wide">Pendientes</span>
             </div>
             <div className="text-3xl font-bold text-blue-500 mb-1">{stats.cotizacionesPendientes}</div>
             <div className="text-sm text-blue-400 font-medium">Cotizaciones</div>
@@ -161,7 +161,7 @@ export default function Dashboard() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
               {productosAlerta.map(producto => (
                 <div key={producto.id} className={`bg-white rounded-lg p-3 shadow-sm ${producto.stock === 0 ? 'border-2 border-red-300' : 'border border-yellow-200'}`}>
-                  <p className="text-xs text-gold font-bold">{producto.codigo}</p>
+                  <p className="text-xs text-vino font-bold">{producto.codigo}</p>
                   <p className={`text-lg font-bold mt-1 ${producto.stock === 0 ? 'text-red-500' : 'text-yellow-600'}`}>
                     {producto.stock === 0 ? 'AGOTADO' : `Stock: ${producto.stock}`}
                   </p>
@@ -173,14 +173,14 @@ export default function Dashboard() {
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white rounded-2xl p-6 shadow-md">
-            <h2 className="text-lg font-bold text-charcoal mb-4 flex items-center gap-2">
-              <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <h2 className="text-lg font-bold text-negro mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-vino" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               Gestión Rápida
             </h2>
             <div className="space-y-3">
-              <Link href="/admin/productos" className="flex items-center gap-4 bg-gradient-to-r from-gold to-gold-dark text-white p-4 rounded-xl hover:shadow-lg transition-all group">
+              <Link href="/admin/productos" className="flex items-center gap-4 bg-gradient-to-r from-vino to-vino-dark text-white p-4 rounded-xl hover:shadow-lg transition-all group">
                 <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -191,7 +191,7 @@ export default function Dashboard() {
                   <p className="text-sm text-white/80">Agregar, editar o eliminar productos</p>
                 </div>
               </Link>
-              <Link href="/admin/modulos" className="flex items-center gap-4 bg-gradient-to-r from-charcoal to-gray-800 text-white p-4 rounded-xl hover:shadow-lg transition-all group">
+              <Link href="/admin/modulos" className="flex items-center gap-4 bg-gradient-to-r from-vino to-gray-800 text-white p-4 rounded-xl hover:shadow-lg transition-all group">
                 <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -222,8 +222,8 @@ export default function Dashboard() {
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-md">
-            <h2 className="text-lg font-bold text-charcoal mb-4 flex items-center gap-2">
-              <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <h2 className="text-lg font-bold text-negro mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-vino" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               Últimas Cotizaciones
@@ -245,9 +245,12 @@ function CotizacionesRecientes() {
   }, []);
 
   async function loadCotizaciones() {
-    const res = await fetch('/api/admin/cotizaciones');
-    const data = await res.json();
-    if (data.cotizaciones) setCotizaciones(data.cotizaciones.slice(0, 5));
+    const { data } = await supabase
+      .from('cotizaciones')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(5);
+    if (data) setCotizaciones(data);
   }
 
   if (cotizaciones.length === 0) {
@@ -275,10 +278,10 @@ function CotizacionesRecientes() {
   return (
     <div className="space-y-3">
       {cotizaciones.map(c => (
-        <div key={c.id} className="border border-gray-100 rounded-xl p-4 hover:border-gold/30 hover:bg-gold/5 transition-all">
+        <div key={c.id} className="border border-gray-100 rounded-xl p-4 hover:border-vino/30 hover:bg-vino/5 transition-all">
           <div className="flex justify-between items-start mb-2">
             <div>
-              <p className="font-semibold text-charcoal">{c.cliente_nombre}</p>
+              <p className="font-semibold text-negro">{c.cliente_nombre}</p>
               <p className="text-sm text-gray-400">{formatDate(c.created_at)}</p>
             </div>
             <span className={`text-xs px-3 py-1 rounded-full font-medium ${
@@ -292,7 +295,7 @@ function CotizacionesRecientes() {
           </div>
           <div className="flex justify-between items-center">
             <p className="text-sm text-gray-500">{c.cliente_celular}</p>
-            <p className="font-bold text-gold">{getTotal(c.productos || []).toFixed(2)} Bs</p>
+            <p className="font-bold text-vino">{getTotal(c.productos || []).toFixed(2)} Bs</p>
           </div>
         </div>
       ))}

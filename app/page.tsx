@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { supabase, Modulo } from '@/lib/supabase';
@@ -41,7 +41,7 @@ export default function Home() {
         <Header />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gold animate-pulse" />
+            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-vino animate-pulse" />
             <p className="text-gray-500">Cargando...</p>
           </div>
         </main>

@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 export function TikTokBanner() {
   return (
-    <div className="bg-charcoal py-2.5 px-4">
+    <div className="bg-vino py-2.5 px-4">
       <div className="max-w-7xl mx-auto flex items-center justify-center gap-3">
         <svg
           viewBox="0 0 24 24"
@@ -18,7 +18,7 @@ export function TikTokBanner() {
           href="https://www.tiktok.com/@www.tiktok.com.catalina"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 bg-gold text-charcoal px-4 py-1.5 rounded-full font-bold text-xs hover:bg-gold-dark transition-colors shadow-sm"
+          className="inline-flex items-center gap-1.5 bg-vino text-negro px-4 py-1.5 rounded-full font-bold text-xs hover:bg-vino-dark transition-colors shadow-sm"
         >
           <span>Joyería Catalina</span>
           <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -48,7 +48,7 @@ export default function SubcategoriaPage() {
       <div className="min-h-screen flex flex-col bg-white">
         <TikTokBanner />
         <div className="flex-1 flex items-center justify-center">
-          <div className="text-charcoal text-xl">Cargando...</div>
+          <div className="text-negro text-xl">Cargando...</div>
         </div>
         <WhatsAppButtonLazy />
       </div>
@@ -61,7 +61,7 @@ export default function SubcategoriaPage() {
       
       <header className="bg-white border-b border-gray-100 py-4 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          <Link href="/" className="inline-flex items-center gap-2 text-charcoal hover:text-gold transition-colors">
+          <Link href="/" className="inline-flex items-center gap-2 text-negro hover:text-vino transition-colors">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
@@ -86,10 +86,10 @@ export default function SubcategoriaPage() {
       </header>
 
       <main className="flex-1">
-        <div className="relative bg-charcoal py-14 md:py-20">
-          <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-gray-900 to-charcoal" />
+        <div className="relative bg-vino py-14 md:py-20">
+          <div className="absolute inset-0 bg-gradient-to-r from-vino via-gray-900 to-vino" />
           <div className="relative max-w-7xl mx-auto px-4 text-center">
-            <p className="text-gold text-sm uppercase tracking-[0.3em] mb-3">{modulo?.nombre}</p>
+            <p className="text-vino text-sm uppercase tracking-[0.3em] mb-3">{modulo?.nombre}</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-4">
               {selectedSubcategoria ? selectedSubcategoria.nombre.toUpperCase() : 'VER TODO'}
             </h1>
@@ -102,8 +102,8 @@ export default function SubcategoriaPage() {
               href={`/modulo/${moduloId}`}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 !subcategoriaId
-                  ? 'bg-gold text-white shadow-lg'
-                  : 'bg-white text-charcoal hover:bg-gray-100 border border-gray-200'
+                  ? 'bg-vino text-white shadow-lg'
+                  : 'bg-white text-negro hover:bg-gray-100 border border-gray-200'
               }`}
             >
               Ver todo
@@ -114,8 +114,8 @@ export default function SubcategoriaPage() {
                 href={`/modulo/${moduloId}?subcategoria=${sub.id}`}
                 className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                   subcategoriaId === sub.id
-                    ? 'bg-gold text-white shadow-lg'
-                    : 'bg-white text-charcoal hover:bg-gray-100 border border-gray-200'
+                    ? 'bg-vino text-white shadow-lg'
+                    : 'bg-white text-negro hover:bg-gray-100 border border-gray-200'
                 }`}
               >
                 {sub.nombre}
@@ -131,9 +131,9 @@ export default function SubcategoriaPage() {
         </div>
       </main>
 
-      <footer className="bg-charcoal text-white py-10 mt-auto">
+      <footer className="bg-vino text-white py-10 mt-auto">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-lg">
+          <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-vino to-vino-dark flex items-center justify-center shadow-lg">
             <span className="text-white text-xl font-bold">JC</span>
           </div>
           <p className="font-bold text-xl text-white tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Catalina</p>

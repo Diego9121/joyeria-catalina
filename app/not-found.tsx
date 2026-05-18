@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Home, ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
@@ -10,7 +10,7 @@ export default function NotFound() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(135deg, #FFF8E7 0%, #FFF5D4 100%)",
+        background: "linear-gradient(135deg, #FFF0F0 0%, #FFF5D4 100%)",
         padding: "2rem",
         textAlign: "center",
       }}
@@ -20,12 +20,12 @@ export default function NotFound() {
           width: 120,
           height: 120,
           borderRadius: "50%",
-          background: "linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)",
+          background: "linear-gradient(135deg, #6B1D2F 0%, #4A1220 100%)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           marginBottom: "2rem",
-          boxShadow: "0 8px 32px rgba(212, 175, 55, 0.3)",
+          boxShadow: "0 8px 32px rgba(107, 29, 47, 0.3)",
         }}
       >
         <span style={{ fontSize: 48, fontWeight: 800, color: "#fff" }}>404</span>
@@ -40,7 +40,7 @@ export default function NotFound() {
           fontFamily: "var(--font-logo), Arial, sans-serif",
         }}
       >
-        Página No Encontrada
+        PÃ¡gina No Encontrada
       </h1>
 
       <p
@@ -52,7 +52,7 @@ export default function NotFound() {
           marginBottom: "2rem",
         }}
       >
-        Lo sentimos, la página que buscas no existe o fue movida. Explora nuestro catálogo para descubrir piezas únicas.
+        Lo sentimos, la pÃ¡gina que buscas no existe o fue movida. Explora nuestro catÃ¡logo para descubrir piezas Ãºnicas.
       </p>
 
       <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
@@ -63,12 +63,12 @@ export default function NotFound() {
             alignItems: "center",
             gap: "0.5rem",
             padding: "0.875rem 1.75rem",
-            background: "linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)",
+            background: "linear-gradient(135deg, #6B1D2F 0%, #4A1220 100%)",
             color: "#fff",
             borderRadius: 12,
             fontWeight: 600,
             textDecoration: "none",
-            boxShadow: "0 4px 16px rgba(212, 175, 55, 0.35)",
+            boxShadow: "0 4px 16px rgba(107, 29, 47, 0.35)",
             transition: "transform 0.2s, box-shadow 0.2s",
           }}
         >
@@ -84,8 +84,8 @@ export default function NotFound() {
             gap: "0.5rem",
             padding: "0.875rem 1.75rem",
             background: "#fff",
-            color: "#D4AF37",
-            border: "2px solid #D4AF37",
+            color: "#6B1D2F",
+            border: "2px solid #6B1D2F",
             borderRadius: 12,
             fontWeight: 600,
             textDecoration: "none",
@@ -93,7 +93,7 @@ export default function NotFound() {
           }}
         >
           <ArrowLeft size={18} />
-          Ver Catálogo
+          Ver CatÃ¡logo
         </Link>
       </div>
 

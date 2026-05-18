@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useCallback } from 'react';
 import Cropper from 'react-easy-crop';
@@ -87,8 +87,8 @@ export function ImageCropModal({ imageSrc, onClose, onCropComplete }: ImageCropM
     <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-2 sm:p-4">
       <div className="bg-white rounded-2xl w-full h-full sm:w-full sm:max-w-md sm:h-auto overflow-hidden flex flex-col">
         <div className="p-3 sm:p-4 border-b border-gray-200">
-          <h3 className="text-lg font-bold text-charcoal">Recortar Imagen</h3>
-          <p className="text-sm text-gray-500">Ajusta el tamaño y posición</p>
+          <h3 className="text-lg font-bold text-negro">Recortar Imagen</h3>
+          <p className="text-sm text-gray-500">Ajusta el tamaÃ±o y posiciÃ³n</p>
         </div>
 
         <div className="relative flex-1 min-h-[30vh] sm:h-64 bg-gray-900">
@@ -117,7 +117,7 @@ export function ImageCropModal({ imageSrc, onClose, onCropComplete }: ImageCropM
               step={0.1}
               value={zoom}
               onChange={(e) => setZoom(Number(e.target.value))}
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gold"
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-vino"
             />
           </div>
 
@@ -131,7 +131,7 @@ export function ImageCropModal({ imageSrc, onClose, onCropComplete }: ImageCropM
             <button
               onClick={getCroppedImg}
               disabled={loading}
-              className="flex-1 bg-gold text-white py-2 sm:py-2.5 rounded-lg hover:bg-gold-dark font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2 text-sm sm:text-base"
+              className="flex-1 bg-vino text-white py-2 sm:py-2.5 rounded-lg hover:bg-vino-dark font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               {loading ? (
                 <>

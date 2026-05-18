@@ -1,4 +1,4 @@
-import Image from 'next/image';
+﻿import Image from 'next/image';
 import Link from 'next/link';
 import { memo, useState, useEffect } from 'react';
 import { Producto, Subcategoria } from '@/lib/supabase';
@@ -101,7 +101,7 @@ function ProductCardComponent({ product, subcategorias, subcategoriaActivaId }: 
         )}
 
         {product.subcategoria_id && product.subcategoria_id !== subcategoriaActivaId && (
-          <Badge variant="outline" className="absolute top-3 left-3 bg-white/95 border-gray-200 text-charcoal text-xs">
+          <Badge variant="outline" className="absolute top-3 left-3 bg-white/95 border-gray-200 text-negro text-xs">
             {getSubcategoriaNombre(product.subcategoria_id)}
           </Badge>
         )}
@@ -116,7 +116,7 @@ function ProductCardComponent({ product, subcategorias, subcategoriaActivaId }: 
               {formatCurrency(product.precio)}
             </span>
           )}
-          <span className={`text-base font-bold ${tieneDescuento ? 'text-red-500' : 'text-charcoal'}`}>
+          <span className={`text-base font-bold ${tieneDescuento ? 'text-red-500' : 'text-negro'}`}>
             {formatCurrency(precio)}
           </span>
         </div>
@@ -126,7 +126,7 @@ function ProductCardComponent({ product, subcategorias, subcategoriaActivaId }: 
             <div className="flex items-center gap-0.5 bg-gray-100 rounded p-0.5">
               <button
                 onClick={handleDecrement}
-                className="w-7 h-7 rounded flex items-center justify-center font-bold text-charcoal bg-white hover:bg-green-500 hover:text-white transition-all duration-200 text-sm"
+                className="w-7 h-7 rounded flex items-center justify-center font-bold text-negro bg-white hover:bg-green-500 hover:text-white transition-all duration-200 text-sm"
               >
                 -
               </button>
@@ -137,7 +137,7 @@ function ProductCardComponent({ product, subcategorias, subcategoriaActivaId }: 
                 className={`w-7 h-7 rounded flex items-center justify-center font-bold transition-all duration-200 text-sm ${
                   isMaxStock
                     ? 'bg-gray-100 text-gray-300 cursor-not-allowed'
-                    : 'bg-white text-charcoal hover:bg-green-500 hover:text-white'
+                    : 'bg-white text-negro hover:bg-green-500 hover:text-white'
                 }`}
               >
                 +

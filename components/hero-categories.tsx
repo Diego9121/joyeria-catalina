@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -89,18 +89,18 @@ export function HeroCategories({ modulos }: HeroCategoriesProps) {
       <div className="relative max-w-7xl mx-auto px-4">
         <div className="text-center mb-6">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold" />
-            <span className="text-gold text-sm font-medium tracking-[0.3em] uppercase">Joyería Exclusiva</span>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold" />
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-vino" />
+            <span className="text-vino text-sm font-medium tracking-[0.3em] uppercase">Joyería Exclusiva</span>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-vino" />
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal mb-4 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-negro mb-4 tracking-tight">
             Nuestras Colecciones
           </h2>
           <p className="text-sm sm:text-base md:text-base lg:text-lg text-gray-500 max-w-xl mx-auto">
             Piezas únicas diseñadas para brillar en cada momento especial
           </p>
-          <p className="text-sm sm:text-base font-semibold text-gold mt-3 tracking-wide">
-            TIENDA VIRTUAL LA PAZ - EL ALTO - BOLIVIA
+          <p className="text-sm sm:text-base font-semibold text-vino mt-3 tracking-wide">
+            TIENDA VIRTUAL SANTA CRUZ - BOLIVIA
           </p>
         </div>
 
@@ -123,10 +123,10 @@ export function HeroCategories({ modulos }: HeroCategoriesProps) {
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
                 
-                <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-vino/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="absolute top-2 right-2 md:top-3 md:right-3">
-                  <span className="bg-gold/95 text-white text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 rounded-full shadow-md tracking-wide">
+                  <span className="bg-vino/95 text-white text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 rounded-full shadow-md tracking-wide">
                     {modulo.prefijo_codigo}
                   </span>
                 </div>
@@ -136,7 +136,7 @@ export function HeroCategories({ modulos }: HeroCategoriesProps) {
                     <h3 className="text-sm md:text-base lg:text-xl xl:text-2xl font-bold text-white tracking-wide">
                       {modulo.nombre}
                     </h3>
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gold flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-vino flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                       <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" className="w-5 h-5">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
@@ -144,7 +144,7 @@ export function HeroCategories({ modulos }: HeroCategoriesProps) {
                   </div>
                 </div>
 
-                <div className="absolute inset-0 border border-white/0 group-hover:border-gold/50 rounded-xl md:rounded-2xl transition-colors duration-500" />
+                <div className="absolute inset-0 border border-white/0 group-hover:border-vino/50 rounded-xl md:rounded-2xl transition-colors duration-500" />
               </div>
             </Link>
           ))}
@@ -153,7 +153,7 @@ export function HeroCategories({ modulos }: HeroCategoriesProps) {
         <div className="mt-16 flex flex-wrap justify-center items-center gap-8 md:gap-12">
           <div className="flex items-center gap-3 text-gray-600">
             <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-              <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-vino" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
               </svg>
             </div>
@@ -161,7 +161,7 @@ export function HeroCategories({ modulos }: HeroCategoriesProps) {
           </div>
           <div className="flex items-center gap-3 text-gray-600">
             <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-              <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-vino" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -169,7 +169,7 @@ export function HeroCategories({ modulos }: HeroCategoriesProps) {
           </div>
           <div className="flex items-center gap-3 text-gray-600">
             <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-              <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-vino" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
             </div>

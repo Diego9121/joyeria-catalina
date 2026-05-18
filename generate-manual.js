@@ -1,4 +1,4 @@
-const PDFDocument = require('pdfkit');
+﻿const PDFDocument = require('pdfkit');
 const fs = require('fs');
 
 const outputPath = 'C:\\Users\\Ryzen5\\Desktop\\Manual_Usuario_Joyeria_Bella.pdf';
@@ -11,12 +11,12 @@ const stream = fs.createWriteStream(outputPath);
 
 doc.pipe(stream);
 
-doc.fontSize(26).fillColor('#B8860B').text('JOYERÍA BELLA', { align: 'center' });
+doc.fontSize(26).fillColor('#6B1D2F').text('JOYERÍA CATALINA', { align: 'center' });
 doc.fontSize(16).fillColor('#333').text('Manual de Usuario', { align: 'center' });
 doc.fontSize(12).text('Versión 1.0 - Mayo 2026', { align: 'center' });
 doc.moveDown(2);
 
-doc.fontSize(14).fillColor('#B8860B').text('Tabla de Contenidos', { align: 'center' });
+doc.fontSize(14).fillColor('#6B1D2F').text('Tabla de Contenidos', { align: 'center' });
 doc.fontSize(10).fillColor('#333').text('1. Introducción', { align: 'center' });
 doc.text('2. Acceso al Sistema', { align: 'center' });
 doc.text('3. Guía para Clientes', { align: 'center' });
@@ -28,9 +28,9 @@ doc.moveDown();
 doc.fontSize(10).fillColor('#888').text('─────────────────────────────────', { align: 'center' });
 doc.moveDown(2);
 
-doc.fontSize(14).fillColor('#B8860B').text('1. Introducción');
+doc.fontSize(14).fillColor('#6B1D2F').text('1. Introducción');
 doc.moveDown();
-doc.fontSize(10).fillColor('#333').text('Bienvenido al Manual de Usuario de Joyería Bella.');
+doc.fontSize(10).fillColor('#333').text('Bienvenido al Manual de Usuario de JOYERÍA CATALINA.');
 doc.moveDown();
 doc.fontSize(10).fillColor('#333').text('El sistema permite:');
 doc.text('- Gestionar productos (módulos, subcategorías, precios, stock)');
@@ -42,7 +42,7 @@ doc.moveDown(2);
 doc.fontSize(10).fillColor('#888').text('─────────────────────────────────', { align: 'center' });
 doc.moveDown(2);
 
-doc.fontSize(14).fillColor('#B8860B').text('2. Acceso al Sistema');
+doc.fontSize(14).fillColor('#6B1D2F').text('2. Acceso al Sistema');
 doc.moveDown();
 doc.fontSize(10).fillColor('#333').text('Sitio público: https://joyeria-bella.vercel.app');
 doc.text('Panel admin: https://joyeria-bella.vercel.app/admin');
@@ -56,7 +56,7 @@ doc.moveDown(2);
 doc.fontSize(10).fillColor('#888').text('─────────────────────────────────', { align: 'center' });
 doc.moveDown(2);
 
-doc.fontSize(14).fillColor('#B8860B').text('3. Guía para Clientes');
+doc.fontSize(14).fillColor('#6B1D2F').text('3. Guía para Clientes');
 doc.moveDown();
 doc.fontSize(10).fillColor('#333').text('3.1 Navegar el Catálogo');
 doc.text('- Módulos: Aretes, Pulseras, Anillos, etc.');
@@ -83,7 +83,7 @@ doc.moveDown(2);
 doc.fontSize(10).fillColor('#888').text('─────────────────────────────────', { align: 'center' });
 doc.moveDown(2);
 
-doc.fontSize(14).fillColor('#B8860B').text('4. Guía para Administradores');
+doc.fontSize(14).fillColor('#6B1D2F').text('4. Guía para Administradores');
 doc.moveDown();
 doc.fontSize(10).fillColor('#333').text('4.1 Panel de Control (Dashboard)');
 doc.text('- Total de productos en el sistema');
@@ -111,7 +111,7 @@ doc.moveDown(2);
 doc.fontSize(10).fillColor('#888').text('─────────────────────────────────', { align: 'center' });
 doc.moveDown(2);
 
-doc.fontSize(14).fillColor('#B8860B').text('5. Sistema de Stock y Reservas');
+doc.fontSize(14).fillColor('#6B1D2F').text('5. Sistema de Stock y Reservas');
 doc.moveDown();
 doc.fontSize(10).fillColor('#333').text('5.1 Reserva Automática');
 doc.text('- Stock se decrementa al enviar cotización');
@@ -125,7 +125,7 @@ doc.moveDown(2);
 doc.fontSize(10).fillColor('#888').text('─────────────────────────────────', { align: 'center' });
 doc.moveDown(2);
 
-doc.fontSize(14).fillColor('#B8860B').text('6. Solución de Problemas');
+doc.fontSize(14).fillColor('#6B1D2F').text('6. Solución de Problemas');
 doc.moveDown();
 doc.fontSize(10).fillColor('#333').text('PROBLEMA: No puedo agregar productos');
 doc.text('SOLUCIÓN: Verificar stock disponible');
@@ -140,8 +140,8 @@ doc.moveDown(3);
 doc.fontSize(10).fillColor('#888').text('─────────────────────────────────', { align: 'center' });
 doc.moveDown(2);
 
-doc.fontSize(22).fillColor('#B8860B').text('MANUAL COMPLETO', { align: 'center' });
-doc.fontSize(12).fillColor('#666').text('Joyería Bella - Sistema de Gestión', { align: 'center' });
+doc.fontSize(22).fillColor('#6B1D2F').text('MANUAL COMPLETO', { align: 'center' });
+doc.fontSize(12).fillColor('#666').text('JOYERÍA CATALINA - Sistema de Gestión', { align: 'center' });
 doc.fontSize(12).fillColor('#888').text('Mayo 2026', { align: 'center' });
 
 doc.end();

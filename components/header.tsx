@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from "next/link";
 import { useCart } from "./cart-context";
@@ -11,11 +11,11 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-vino to-vino-dark flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
               <span className="text-white text-lg font-bold">JC</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-charcoal tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>
+              <h1 className="text-2xl font-bold text-negro tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>
                 Joyería Catalina
               </h1>
               <p className="text-xs text-gray-400 tracking-widest uppercase">Joyería Fina</p>
@@ -32,15 +32,15 @@ export function Header() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                className="w-5 h-5 text-charcoal"
+                className="w-5 h-5 text-negro"
               >
                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <path d="M16 10a4 4 0 01-8 0" />
               </svg>
-              <span className="font-medium text-charcoal hidden sm:inline">Carrito</span>
+              <span className="font-medium text-negro hidden sm:inline">Carrito</span>
               {totalItems > 0 && (
-                <span className={`absolute -top-1.5 -right-1.5 bg-gold text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-sm transition-all duration-300 ${
+                <span className={`absolute -top-1.5 -right-1.5 bg-vino text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-sm transition-all duration-300 ${
                   cartAnimation ? 'scale-150 bg-green-500' : ''
                 }`}>
                   {totalItems}
@@ -50,7 +50,7 @@ export function Header() {
 
             <Link
               href="/admin"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-charcoal to-gray-800 text-white hover:from-gray-800 hover:to-charcoal transition-all shadow-md"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-vino to-gray-800 text-white hover:from-gray-800 hover:to-vino transition-all shadow-md"
             >
               <svg
                 viewBox="0 0 24 24"

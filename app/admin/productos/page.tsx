@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState, useCallback, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -139,20 +139,20 @@ function ProductosAdminContent() {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-cream flex items-center justify-center text-xl text-gold">Cargando...</div>;
+    return <div className="min-h-screen bg-rosado flex items-center justify-center text-xl text-vino">Cargando...</div>;
   }
 
   return (
     <AdminProtected>
-      <div className="min-h-screen bg-cream">
-      <header className="bg-charcoal text-gold py-4 px-6 shadow-lg">
+      <div className="min-h-screen bg-rosado">
+      <header className="bg-gradient-to-r from-vino to-vino-dark text-white py-4 px-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <h1 className="text-xl sm:text-2xl font-bold">Gestionar Productos</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-white">Gestionar Productos</h1>
           <div className="flex gap-2">
-            <Link href="/admin/dashboard" className="px-3 py-1.5 rounded-lg border border-gold text-gold hover:bg-gold hover:text-white transition text-sm">
+            <Link href="/admin/dashboard" className="px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white transition text-sm">
               ← Dashboard
             </Link>
-            <Link href="/admin/modulos" className="px-3 py-1.5 rounded-lg border border-gold text-gold hover:bg-gold hover:text-white transition text-sm">
+            <Link href="/admin/modulos" className="px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white transition text-sm">
               Módulos
             </Link>
           </div>
@@ -165,7 +165,7 @@ function ProductosAdminContent() {
             <select
               value={filterModulo}
               onChange={(e) => handleModuloChange(e.target.value)}
-              className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-gold bg-white"
+              className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-vino focus:border-vino bg-white"
             >
               <option value="">Todos los módulos</option>
               {modulos.map(m => (
@@ -175,7 +175,7 @@ function ProductosAdminContent() {
             <select
               value={filterSubcategoria}
               onChange={(e) => handleSubcategoriaChange(e.target.value)}
-              className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-gold bg-white"
+              className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-vino focus:border-vino bg-white"
               disabled={!filterModulo}
             >
               <option value="">Todas las subcategorías</option>
@@ -213,7 +213,7 @@ function ProductosAdminContent() {
 
         <div className="bg-white rounded-xl shadow-md overflow-x-auto">
           <table className="w-full min-w-[600px]">
-            <thead className="bg-gold text-white">
+            <thead className="bg-vino text-white">
               <tr>
                 <th className="px-4 py-3 text-left w-24">Imagen</th>
                 <th className="px-4 py-3 text-left">Código</th>
@@ -238,7 +238,7 @@ function ProductosAdminContent() {
                       </div>
                     )}
                   </td>
-                  <td className="px-4 py-3 font-semibold text-gold">{product.codigo}</td>
+                  <td className="px-4 py-3 font-semibold text-vino">{product.codigo}</td>
                   <td className="px-4 py-3">{getModuloNombre(product.modulo_id)}</td>
                   <td className="px-4 py-3">{getSubcategoriaNombre(product.subcategoria_id)}</td>
                   <td className="px-4 py-3 text-center font-semibold">
@@ -393,7 +393,7 @@ function NuevoModuloModal({ onClose, onSave }: NuevoModuloModalProps) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[60]">
       <div className="bg-white rounded-2xl p-6 w-full max-w-md">
-        <h2 className="text-xl font-bold text-charcoal mb-4">Nuevo Módulo</h2>
+        <h2 className="text-xl font-bold text-negro mb-4">Nuevo Módulo</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Nombre del Módulo</label>
@@ -401,7 +401,7 @@ function NuevoModuloModal({ onClose, onSave }: NuevoModuloModalProps) {
               type="text"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
               placeholder="Ej: Anillos"
               required
             />
@@ -412,7 +412,7 @@ function NuevoModuloModal({ onClose, onSave }: NuevoModuloModalProps) {
               type="text"
               value={prefijo}
               onChange={(e) => setPrefijo(e.target.value.toUpperCase())}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
               placeholder="Ej: AN"
               maxLength={3}
               required
@@ -420,7 +420,7 @@ function NuevoModuloModal({ onClose, onSave }: NuevoModuloModalProps) {
           </div>
           <div className="flex gap-4 pt-2">
             <button type="button" onClick={onClose} className="flex-1 border border-gray-300 py-2.5 rounded-lg hover:bg-gray-100">Cancelar</button>
-            <button type="submit" disabled={guardando} className="flex-1 btn-gold py-2.5 disabled:opacity-50">
+            <button type="submit" disabled={guardando} className="flex-1 btn-vino py-2.5 disabled:opacity-50">
               {guardando ? 'Creando...' : 'Crear'}
             </button>
           </div>
@@ -463,7 +463,7 @@ function NuevaSubcategoriaModal({ modulos, onClose, onSave }: NuevaSubcategoriaM
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[60]">
       <div className="bg-white rounded-2xl p-6 w-full max-w-md">
-        <h2 className="text-xl font-bold text-charcoal mb-4">Nueva Subcategoría</h2>
+        <h2 className="text-xl font-bold text-negro mb-4">Nueva Subcategoría</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Nombre de Subcategoría</label>
@@ -471,7 +471,7 @@ function NuevaSubcategoriaModal({ modulos, onClose, onSave }: NuevaSubcategoriaM
               type="text"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
               placeholder="Ej: Compromiso"
               required
             />
@@ -481,7 +481,7 @@ function NuevaSubcategoriaModal({ modulos, onClose, onSave }: NuevaSubcategoriaM
             <select
               value={moduloId}
               onChange={(e) => setModuloId(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
               required
             >
               {modulos.map(m => (
@@ -495,14 +495,14 @@ function NuevaSubcategoriaModal({ modulos, onClose, onSave }: NuevaSubcategoriaM
               type="text"
               value={prefijo}
               onChange={(e) => setPrefijo(e.target.value.toUpperCase())}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
               placeholder="Ej: C"
               maxLength={3}
             />
           </div>
           <div className="flex gap-4 pt-2">
             <button type="button" onClick={onClose} className="flex-1 border border-gray-300 py-2.5 rounded-lg hover:bg-gray-100">Cancelar</button>
-            <button type="submit" disabled={guardando} className="flex-1 btn-gold py-2.5 disabled:opacity-50">
+            <button type="submit" disabled={guardando} className="flex-1 btn-vino py-2.5 disabled:opacity-50">
               {guardando ? 'Creando...' : 'Crear'}
             </button>
           </div>
@@ -514,7 +514,7 @@ function NuevaSubcategoriaModal({ modulos, onClose, onSave }: NuevaSubcategoriaM
 
 export default function ProductosAdmin() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-cream flex items-center justify-center text-xl text-gold">Cargando...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-rosado flex items-center justify-center text-xl text-vino">Cargando...</div>}>
       <ProductosAdminContent />
     </Suspense>
   );

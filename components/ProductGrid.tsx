@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { Producto, Subcategoria } from '@/lib/supabase';
@@ -80,7 +80,7 @@ export function ProductGrid({ moduloId, subcategoriaId, subcategorias }: Product
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
           </svg>
         </div>
-        <h3 className="text-xl font-semibold text-charcoal mb-2">No hay productos</h3>
+        <h3 className="text-xl font-semibold text-negro mb-2">No hay productos</h3>
         <p className="text-gray-500">Esta subcategoría aún no tiene productos disponibles</p>
       </div>
     );
@@ -103,10 +103,10 @@ export function ProductGrid({ moduloId, subcategoriaId, subcategorias }: Product
 
       {totalPages > 1 && (
         <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-3">
-          <button
+<button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-charcoal text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors font-medium"
+            className="px-4 py-2 bg-vino text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors font-medium"
           >
             ← Anterior
           </button>
@@ -133,8 +133,8 @@ export function ProductGrid({ moduloId, subcategoriaId, subcategorias }: Product
                   onClick={() => handlePageChange(page)}
                   className={`w-10 h-10 rounded-lg font-medium transition-colors ${
                     currentPage === page
-                      ? 'bg-gold text-white'
-                      : 'bg-white text-charcoal hover:bg-gray-100 border border-gray-200'
+                      ? 'bg-vino text-white'
+                      : 'bg-white text-negro hover:bg-gray-100 border border-gray-200'
                   }`}
                 >
                   {page}
@@ -143,10 +143,10 @@ export function ProductGrid({ moduloId, subcategoriaId, subcategorias }: Product
             })}
           </div>
 
-          <button
+<button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-charcoal text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors font-medium"
+            className="px-4 py-2 bg-vino text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors font-medium"
           >
             Siguiente →
           </button>

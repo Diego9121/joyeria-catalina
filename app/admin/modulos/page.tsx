@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -50,20 +50,20 @@ export default function ModulosAdmin() {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-cream flex items-center justify-center text-xl text-gold">Cargando...</div>;
+    return <div className="min-h-screen bg-rosado flex items-center justify-center text-xl text-vino">Cargando...</div>;
   }
 
   return (
     <AdminProtected>
-      <div className="min-h-screen bg-cream">
-      <header className="bg-charcoal text-gold py-4 px-6 shadow-lg">
+      <div className="min-h-screen bg-rosado">
+      <header className="bg-gradient-to-r from-vino to-vino-dark text-white py-4 px-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
           <h1 className="text-xl sm:text-2xl font-bold">Gestionar Módulos y Subcategorías</h1>
           <div className="flex gap-2">
-            <Link href="/admin/dashboard" className="px-3 py-1.5 rounded-lg border border-gold text-gold hover:bg-gold hover:text-white transition text-sm">
+            <Link href="/admin/dashboard" className="px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white transition text-sm">
               ← Dashboard
             </Link>
-            <Link href="/admin/productos" className="px-3 py-1.5 rounded-lg border border-gold text-gold hover:bg-gold hover:text-white transition text-sm">
+            <Link href="/admin/productos" className="px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white transition text-sm">
               Productos
             </Link>
           </div>
@@ -74,8 +74,8 @@ export default function ModulosAdmin() {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white rounded-xl p-6 shadow-md">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-charcoal">Módulos</h2>
-              <button onClick={() => { setEditingModulo(null); setShowModuloModal(true); }} className="btn-gold text-sm">
+              <h2 className="text-xl font-bold text-negro">Módulos</h2>
+              <button onClick={() => { setEditingModulo(null); setShowModuloModal(true); }} className="btn-vino text-sm">
                 + Nuevo Módulo
               </button>
             </div>
@@ -83,20 +83,20 @@ export default function ModulosAdmin() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {modulos.map(modulo => (
                 <div key={modulo.id} className="bg-gray-50 rounded-xl overflow-hidden hover:shadow-md transition-all">
-                  <div className="relative h-32 bg-gradient-to-br from-gold/20 to-gold-dark/20">
+                  <div className="relative h-32 bg-gradient-to-br from-vino/20 to-vino-dark/20">
                     {modulo.imagen_url ? (
                       <Image src={modulo.imagen_url} alt={modulo.nombre} fill className="object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <span className="text-4xl font-bold text-gold/50">{modulo.prefijo_codigo}</span>
+                        <span className="text-4xl font-bold text-vino/50">{modulo.prefijo_codigo}</span>
                       </div>
                     )}
                   </div>
                   <div className="p-3">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="font-bold text-charcoal">{modulo.nombre}</p>
-                        <p className="text-sm text-gold">({modulo.prefijo_codigo})</p>
+                        <p className="font-bold text-negro">{modulo.nombre}</p>
+                        <p className="text-sm text-vino">({modulo.prefijo_codigo})</p>
                       </div>
                       <div className="flex gap-1">
                         <button 
@@ -132,8 +132,8 @@ export default function ModulosAdmin() {
 
           <div className="bg-white rounded-xl p-6 shadow-md">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-charcoal">Subcategorías</h2>
-              <button onClick={() => { setSelectedModuloId(modulos[0]?.id || ''); setEditingSubcategoria(null); setShowSubcategoriaModal(true); }} className="btn-gold text-sm" disabled={modulos.length === 0}>
+              <h2 className="text-xl font-bold text-negro">Subcategorías</h2>
+              <button onClick={() => { setSelectedModuloId(modulos[0]?.id || ''); setEditingSubcategoria(null); setShowSubcategoriaModal(true); }} className="btn-vino text-sm" disabled={modulos.length === 0}>
                 + Nueva Subcategoría
               </button>
             </div>
@@ -160,11 +160,11 @@ export default function ModulosAdmin() {
                   return (
                     <div key={sub.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-gold/10 rounded-lg flex items-center justify-center">
-                          <span className="text-gold text-xs font-bold">{modulo?.prefijo_codigo}</span>
+                        <div className="w-8 h-8 bg-vino/10 rounded-lg flex items-center justify-center">
+                          <span className="text-vino text-xs font-bold">{modulo?.prefijo_codigo}</span>
                         </div>
                         <div>
-                          <span className="font-medium text-charcoal">{sub.nombre}</span>
+                          <span className="font-medium text-negro">{sub.nombre}</span>
                           <span className="ml-2 text-sm text-gray-500">en {modulo?.nombre}</span>
                         </div>
                       </div>
@@ -293,7 +293,7 @@ function ModuloModal({ modulo, onClose, onSave }: { modulo: Modulo | null; onClo
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-1 sm:p-4 z-50">
       <div className="bg-white rounded-2xl p-3 sm:p-6 w-full max-w-xs sm:max-w-md">
-        <h2 className="text-xl sm:text-2xl font-bold text-charcoal mb-2 sm:mb-4">{modulo ? 'Editar Módulo' : 'Nuevo Módulo'}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-negro mb-2 sm:mb-4">{modulo ? 'Editar Módulo' : 'Nuevo Módulo'}</h2>
         <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           <div className="flex flex-col items-center">
             <div className="relative w-24 h-24 sm:w-40 sm:h-40 bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden mb-2">
@@ -309,7 +309,7 @@ function ModuloModal({ modulo, onClose, onSave }: { modulo: Modulo | null; onClo
               )}
             </div>
             {uploading ? (
-              <span className="text-gold text-sm">Subiendo...</span>
+              <span className="text-vino text-sm">Subiendo...</span>
             ) : (
               <div className="flex gap-2">
                 <div>
@@ -354,7 +354,7 @@ function ModuloModal({ modulo, onClose, onSave }: { modulo: Modulo | null; onClo
               type="text"
               value={form.nombre}
               onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
               placeholder="Ej: Aretes"
               required
             />
@@ -365,7 +365,7 @@ function ModuloModal({ modulo, onClose, onSave }: { modulo: Modulo | null; onClo
               type="text"
               value={form.prefijo_codigo}
               onChange={(e) => setForm({ ...form, prefijo_codigo: e.target.value.toUpperCase() })}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
               placeholder="Ej: AR"
               maxLength={3}
               required
@@ -373,7 +373,7 @@ function ModuloModal({ modulo, onClose, onSave }: { modulo: Modulo | null; onClo
           </div>
           <div className="flex gap-4 pt-4">
             <button type="button" onClick={onClose} className="flex-1 border border-gray-300 py-2.5 rounded-lg hover:bg-gray-100">Cancelar</button>
-            <button type="submit" disabled={guardando} className="flex-1 btn-gold py-2.5 disabled:opacity-50">
+            <button type="submit" disabled={guardando} className="flex-1 btn-vino py-2.5 disabled:opacity-50">
               {guardando ? 'Guardando...' : modulo ? 'Guardar' : 'Crear'}
             </button>
           </div>
@@ -477,7 +477,7 @@ function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, subcategor
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-2xl p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-charcoal mb-6">{subcategoria ? 'Editar Subcategoría' : 'Nueva Subcategoría'}</h2>
+        <h2 className="text-2xl font-bold text-negro mb-6">{subcategoria ? 'Editar Subcategoría' : 'Nueva Subcategoría'}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium mb-1">Nombre de Subcategoría</label>
@@ -485,7 +485,7 @@ function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, subcategor
               type="text"
               value={form.nombre}
               onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
               placeholder="Ej: Colgantes"
               required
             />
@@ -495,7 +495,7 @@ function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, subcategor
             <select
               value={form.modulo_id}
               onChange={(e) => setForm({ ...form, modulo_id: e.target.value })}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
               required
             >
               {modulos.map((m: Modulo) => (
@@ -514,8 +514,8 @@ function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, subcategor
                   validarPrefijo(e.target.value, form.modulo_id);
                 }
               }}
-              className={`w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold ${
-                prefijoError ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-gold'
+              className={`w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino ${
+                prefijoError ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-vino'
               }`}
               placeholder="Ej: C (máx 4 caracteres)"
               maxLength={4}
@@ -532,7 +532,7 @@ function SubcategoriaModal({ subcategoria, modulos, selectedModuloId, subcategor
           </div>
           <div className="flex gap-4 pt-4">
             <button type="button" onClick={onClose} className="flex-1 border border-gray-300 py-2.5 rounded-lg hover:bg-gray-100">Cancelar</button>
-            <button type="submit" disabled={guardando} className="flex-1 btn-gold py-2.5 disabled:opacity-50">
+            <button type="submit" disabled={guardando} className="flex-1 btn-vino py-2.5 disabled:opacity-50">
               {guardando ? 'Guardando...' : subcategoria ? 'Guardar' : 'Crear'}
             </button>
           </div>

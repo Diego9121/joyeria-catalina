@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { useRouter, useParams, useSearchParams } from 'next/navigation';
@@ -170,15 +170,15 @@ export default function EditarProductoPage() {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-cream flex items-center justify-center text-xl text-gold">Cargando...</div>;
+    return <div className="min-h-screen bg-rosado flex items-center justify-center text-xl text-vino">Cargando...</div>;
   }
 
   if (!producto) {
     return (
       <AdminProtected>
-        <div className="min-h-screen bg-cream flex flex-col items-center justify-center">
-          <h2 className="text-2xl font-bold text-charcoal mb-4">Producto no encontrado</h2>
-          <button onClick={volverAPProductos} className="btn-gold px-6 py-2 rounded-lg">
+        <div className="min-h-screen bg-rosado flex flex-col items-center justify-center">
+          <h2 className="text-2xl font-bold text-negro mb-4">Producto no encontrado</h2>
+          <button onClick={volverAPProductos} className="btn-vino px-6 py-2 rounded-lg">
             Volver a Productos
           </button>
         </div>
@@ -188,16 +188,16 @@ export default function EditarProductoPage() {
 
   return (
     <AdminProtected>
-      <div className="min-h-screen bg-cream">
-        <header className="bg-charcoal text-gold py-4 px-4 sm:px-6 shadow-lg">
+      <div className="min-h-screen bg-rosado">
+        <header className="bg-gradient-to-r from-vino to-vino-dark text-white py-4 px-4 sm:px-6 shadow-lg">
           <div className="max-w-2xl mx-auto flex justify-between items-center">
-            <button onClick={volverAPProductos} className="flex items-center gap-2 text-gold hover:text-white transition">
+            <button onClick={volverAPProductos} className="flex items-center gap-2 text-white hover:text-gray-200 transition">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               <span className="hidden sm:inline">Productos</span>
             </button>
-            <h1 className="text-lg sm:text-xl font-bold">Editar Producto</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-white">Editar Producto</h1>
             <div className="w-10"></div>
           </div>
         </header>
@@ -217,7 +217,7 @@ export default function EditarProductoPage() {
                 )}
               </div>
               {uploading ? (
-                <span className="text-gold text-sm">Subiendo...</span>
+                <span className="text-vino text-sm">Subiendo...</span>
               ) : (
                 <div className="flex gap-2">
                   <div>
@@ -242,7 +242,7 @@ export default function EditarProductoPage() {
                 <select
                   value={form.modulo_id}
                   onChange={(e) => setForm({ ...form, modulo_id: e.target.value, subcategoria_id: '' })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gold focus:border-gold"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-vino focus:border-vino"
                   required
                 >
                   <option value="">Seleccionar...</option>
@@ -256,7 +256,7 @@ export default function EditarProductoPage() {
                 <select
                   value={form.subcategoria_id}
                   onChange={(e) => setForm({ ...form, subcategoria_id: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gold focus:border-gold"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-vino focus:border-vino"
                   disabled={!form.modulo_id}
                 >
                   <option value="">Ninguna</option>
@@ -274,7 +274,7 @@ export default function EditarProductoPage() {
                   type="number"
                   value={form.precio}
                   onChange={(e) => setForm({ ...form, precio: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
                   placeholder="9.50"
                   step="0.01"
                   min="0"
@@ -287,7 +287,7 @@ export default function EditarProductoPage() {
                   type="number"
                   value={form.stock}
                   onChange={(e) => setForm({ ...form, stock: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
                   min="0"
                   required
                 />
@@ -300,7 +300,7 @@ export default function EditarProductoPage() {
                   type="checkbox"
                   checked={form.en_liquidacion}
                   onChange={(e) => setForm({ ...form, en_liquidacion: e.target.checked, precio_descuento: '' })}
-                  className="w-5 h-5 rounded text-gold focus:ring-gold"
+                  className="w-5 h-5 rounded text-vino focus:ring-vino"
                 />
                 <span className="font-medium text-gray-700">En Liquidación</span>
               </label>
@@ -311,7 +311,7 @@ export default function EditarProductoPage() {
                     type="number"
                     value={form.precio_descuento}
                     onChange={(e) => setForm({ ...form, precio_descuento: e.target.value })}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-gold focus:border-gold"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-vino focus:border-vino"
                     placeholder="8.00"
                     step="0.01"
                     min="0"
@@ -323,7 +323,7 @@ export default function EditarProductoPage() {
             <div className="bg-gray-100 rounded-lg px-4 py-3">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">Código:</span>
-                <span className="font-bold text-gold text-lg">{producto?.codigo || codigo}</span>
+                <span className="font-bold text-vino text-lg">{producto?.codigo || codigo}</span>
               </div>
             </div>
 
@@ -331,7 +331,7 @@ export default function EditarProductoPage() {
               <button type="button" onClick={volverAPProductos} className="flex-1 border border-gray-300 py-3 rounded-lg hover:bg-gray-100 font-medium text-center">
                 Cancelar
               </button>
-              <button type="submit" disabled={guardando} className="flex-1 bg-gold text-white py-3 rounded-lg hover:bg-gold-dark font-medium disabled:opacity-50">
+              <button type="submit" disabled={guardando} className="flex-1 bg-vino text-white py-3 rounded-lg hover:bg-vino-dark font-medium disabled:opacity-50">
                 {guardando ? 'Guardando...' : 'Guardar Cambios'}
               </button>
             </div>

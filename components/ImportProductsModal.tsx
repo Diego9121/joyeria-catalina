@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useRef } from 'react';
 import { Modulo, Subcategoria } from '@/lib/supabase';
@@ -216,7 +216,7 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
         <div className="bg-white rounded-2xl p-6 w-full max-w-md">
-          <h2 className="text-2xl font-bold text-charcoal mb-4">✅ Importación Completada</h2>
+          <h2 className="text-2xl font-bold text-negro mb-4">✅ Importación Completada</h2>
           
           <div className="space-y-3 mb-6">
             <div className="flex justify-between">
@@ -253,7 +253,7 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
 
           <button
             onClick={handleClose}
-            className="w-full py-3 bg-gold text-white rounded-lg font-semibold hover:bg-gold-dark transition"
+            className="w-full py-3 bg-vino text-white rounded-lg font-semibold hover:bg-vino-dark transition"
           >
             Cerrar y ver productos
           </button>
@@ -267,12 +267,12 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
         <div className="bg-white rounded-2xl p-6 w-full max-w-md">
-          <h2 className="text-2xl font-bold text-charcoal mb-4">⏳ Importando productos...</h2>
+          <h2 className="text-2xl font-bold text-negro mb-4">⏳ Importando productos...</h2>
           
           <div className="mb-4">
             <div className="w-full bg-gray-200 rounded-full h-4">
               <div 
-                className="bg-gold h-4 rounded-full transition-all duration-300" 
+                className="bg-vino h-4 rounded-full transition-all duration-300" 
                 style={{ width: `${percentage}%` }}
               />
             </div>
@@ -280,7 +280,7 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
           </div>
 
           <div className="text-sm text-gray-600">
-            <p className="font-medium text-charcoal">Actual:</p>
+            <p className="font-medium text-negro">Actual:</p>
             <p className="truncate">{progress.currentProduct}</p>
             <p className="mt-2 text-gray-400">
               {progress.current} de {progress.total}
@@ -294,11 +294,11 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        <h2 className="text-2xl font-bold text-charcoal mb-6">📥 Importar Productos desde CSV</h2>
+        <h2 className="text-2xl font-bold text-negro mb-6">📥 Importar Productos desde CSV</h2>
 
         <div className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-charcoal mb-2">
+            <label className="block text-sm font-medium text-negro mb-2">
               1. Seleccionar archivo CSV *
             </label>
             <input
@@ -306,7 +306,7 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
               accept=".csv"
               onChange={handleCsvSelect}
               ref={fileInputRef}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-vino focus:border-vino"
             />
             <p className="text-xs text-gray-500 mt-1">
               Formato: codigo,nombre,precio,stock,modulo,subcategoria
@@ -314,7 +314,7 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-charcoal mb-2">
+            <label className="block text-sm font-medium text-negro mb-2">
               2. Seleccionar fotos (opcional)
             </label>
             <input
@@ -323,7 +323,7 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
               multiple
               onChange={handlePhotosSelect}
               ref={photosInputRef}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold focus:border-gold"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-vino focus:border-vino"
             />
             <p className="text-xs text-gray-500 mt-1">
               Los nombres de las fotos deben coincidir con los códigos (ej: A001.jpg)
@@ -351,7 +351,7 @@ export function ImportProductsModal({ modulos, subcategorias, onClose, onComplet
             <button
               onClick={startImport}
               disabled={products.length === 0}
-              className="flex-1 py-3 bg-gold text-white rounded-lg font-semibold hover:bg-gold-dark transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+              className="flex-1 py-3 bg-vino text-white rounded-lg font-semibold hover:bg-vino-dark transition disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
               🚀 Iniciar Importación
             </button>

@@ -17,7 +17,7 @@
 ## Estructura del Proyecto
 
 ```
-joyeria-bella/
+joyeria-catalina/
 ├── app/
 │   ├── page.tsx                    # Home - Catálogo de módulos
 │   ├── modulo/[id]/page.tsx        # Catálogo de productos por módulo

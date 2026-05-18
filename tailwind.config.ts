@@ -8,14 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gold: {
-          DEFAULT: '#D4AF37',
-          dark: '#B8960C',
-          light: '#F4E4BA',
+        vino: {
+          DEFAULT: '#6B1D2F',
+          dark: '#4A1220',
+          light: '#D4A5A5',
         },
-        charcoal: '#1a1a1a',
-        cream: '#FFF8E7',
-        rose: '#B76E79',
+        rosado: '#FFF0F0',
+        negro: '#0A0A0A',
+        plomo: {
+          DEFAULT: '#9CA3AF',
+          dark: '#4B5563',
+        },
       },
     },
   },

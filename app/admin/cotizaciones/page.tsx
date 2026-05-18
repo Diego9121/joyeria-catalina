@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -26,12 +26,12 @@ export default function CotizacionesAdmin() {
 
   async function loadData() {
     const [cotizacionesRes, productosRes] = await Promise.all([
-      fetch('/api/admin/cotizaciones'),
-      fetch('/api/admin/productos').then(r => r.json()),
+      supabase.from('cotizaciones').select('*').order('created_at', { ascending: false }),
+      supabase.from('productos').select('id, codigo, nombre, stock')
     ]);
-    const cotizacionesData = await cotizacionesRes.json();
-    if (cotizacionesData.cotizaciones) setCotizaciones(cotizacionesData.cotizaciones);
-    if (productosRes.productos) setProductosStock(productosRes.productos);
+    
+    if (cotizacionesRes.data) setCotizaciones(cotizacionesRes.data);
+    if (productosRes.data) setProductosStock(productosRes.data);
     setLoading(false);
   }
 
@@ -55,26 +55,40 @@ export default function CotizacionesAdmin() {
     const cotizacion = cotizaciones.find(c => c.id === id);
     if (!cotizacion) return;
 
-    const actualizarStock = nuevoEstado === 'RECHAZADO';
+    if (nuevoEstado === 'RECHAZADO') {
+      for (const prod of cotizacion.productos) {
+        const { data: producto } = await supabase
+          .from('productos')
+          .select('stock')
+          .eq('id', prod.producto_id)
+          .single();
+        
+        if (producto) {
+          await supabase
+            .from('productos')
+            .update({ stock: producto.stock + prod.cantidad })
+            .eq('id', prod.producto_id);
+        }
+      }
+    }
 
-    await fetch('/api/admin/cotizaciones', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, estado: nuevoEstado, productos: cotizacion.productos, actualizarStock }),
-    });
+    await supabase
+      .from('cotizaciones')
+      .update({ estado: nuevoEstado, updated_at: new Date().toISOString() })
+      .eq('id', id);
 
-    const productosRes = await fetch('/api/admin/productos').then(r => r.json());
-    if (productosRes.productos) setProductosStock(productosRes.productos);
+    const { data: productosData } = await supabase.from('productos').select('id, codigo, nombre, stock');
+    if (productosData) setProductosStock(productosData);
     loadData();
   };
 
   const deleteCotizacion = async (id: string) => {
     if (!confirm('¿Eliminar esta cotización?')) return;
 
-    await fetch(`/api/admin/cotizaciones?id=${id}`, { method: 'DELETE' });
+    await supabase.from('cotizaciones').delete().eq('id', id);
     
-    const productosRes = await fetch('/api/admin/productos').then(r => r.json());
-    if (productosRes.productos) setProductosStock(productosRes.productos);
+    const { data: productosData } = await supabase.from('productos').select('id, codigo, nombre, stock');
+    if (productosData) setProductosStock(productosData);
     loadData();
   };
 
@@ -103,17 +117,17 @@ export default function CotizacionesAdmin() {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-cream flex items-center justify-center text-xl text-gold">Cargando...</div>;
+    return <div className="min-h-screen bg-rosado flex items-center justify-center text-xl text-vino">Cargando...</div>;
   }
 
   return (
     <AdminProtected>
-      <div className="min-h-screen bg-cream">
-      <header className="bg-charcoal text-gold py-4 px-6 shadow-lg">
+      <div className="min-h-screen bg-rosado">
+      <header className="bg-gradient-to-r from-vino to-vino-dark text-white py-4 px-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
           <h1 className="text-xl sm:text-2xl font-bold">Cotizaciones en Curso</h1>
           <div className="flex gap-2">
-            <Link href="/admin/dashboard" className="px-3 py-1.5 rounded-lg border border-gold text-gold hover:bg-gold hover:text-white transition text-sm">
+            <Link href="/admin/dashboard" className="px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white transition text-sm">
               ← Dashboard
             </Link>
           </div>
@@ -136,7 +150,7 @@ export default function CotizacionesAdmin() {
           >
             <option value="">Todos los estados</option>
             <option value="PENDIENTE">Pendiente</option>
-            <option value="PAGADO">Pagado</option>
+            
             <option value="APROBADO">Aprobado</option>
             <option value="RECHAZADO">Rechazado</option>
           </select>
@@ -148,15 +162,14 @@ export default function CotizacionesAdmin() {
             const total = getTotal(productos);
             const stockInsuficiente = tieneStockInsuficiente(productos);
             const estadoBadgeColor = cotizacion.estado === 'PENDIENTE' ? 'bg-yellow-100 text-yellow-700' :
-                                   cotizacion.estado === 'PAGADO' ? 'bg-blue-100 text-blue-700' :
                                    cotizacion.estado === 'APROBADO' ? 'bg-green-100 text-green-700' :
                                    'bg-red-100 text-red-700';
 
             return (
-              <div key={cotizacion.id} className={`bg-white rounded-xl shadow-md overflow-hidden ${stockInsuficiente && (cotizacion.estado === 'PENDIENTE' || cotizacion.estado === 'PAGADO') ? 'ring-2 ring-red-400' : ''}`}>
+              <div key={cotizacion.id} className={`bg-white rounded-xl shadow-md overflow-hidden ${stockInsuficiente && cotizacion.estado === 'PENDIENTE' ? 'ring-2 ring-red-400' : ''}`}>
                 <div className="bg-gray-50 p-4 flex flex-wrap justify-between items-center gap-4">
                   <div>
-                    <h3 className="font-bold text-lg text-charcoal">{cotizacion.cliente_nombre}</h3>
+                    <h3 className="font-bold text-lg text-negro">{cotizacion.cliente_nombre}</h3>
                     <p className="text-gray-600">{cotizacion.cliente_celular}</p>
                     <p className="text-sm text-gray-500">
                       {cotizacion.cliente_departamento} - {cotizacion.cliente_provincia}
@@ -171,7 +184,7 @@ export default function CotizacionesAdmin() {
                 </div>
 
                 <div className="p-4">
-                  <h4 className="font-semibold text-charcoal mb-3">Productos:</h4>
+                  <h4 className="font-semibold text-negro mb-3">Productos:</h4>
                   <div className="space-y-2">
                     {productos.map((prod, idx) => {
                       const stockDisp = getStockProducto(prod.producto_id);
@@ -179,7 +192,7 @@ export default function CotizacionesAdmin() {
                       return (
                         <div key={idx} className={`flex justify-between items-center border-b border-gray-100 pb-2 ${sinStock ? 'bg-red-50 px-2 py-1 rounded' : ''}`}>
                           <div className="flex items-center gap-2">
-                            <span className="font-medium text-gold">{prod.codigo}</span>
+                            <span className="font-medium text-vino">{prod.codigo}</span>
                             <span className="text-gray-600">{prod.nombre}</span>
                             {sinStock && (
                               <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">
@@ -196,9 +209,9 @@ export default function CotizacionesAdmin() {
                     })}
                   </div>
 
-                  <div className="mt-4 pt-4 border-t-2 border-gold flex justify-between items-center">
-                    <span className="text-lg font-bold text-charcoal">Total:</span>
-                    <span className="text-2xl font-bold text-gold">{formatCurrency(total)}</span>
+                  <div className="mt-4 pt-4 border-t-2 border-vino flex justify-between items-center">
+                    <span className="text-lg font-bold text-negro">Total:</span>
+                    <span className="text-2xl font-bold text-vino">{formatCurrency(total)}</span>
                   </div>
 
                   {cotizacion.cliente_notas && (
@@ -220,22 +233,6 @@ export default function CotizacionesAdmin() {
                     {cotizacion.estado === 'PENDIENTE' && (
                       <>
                         <button
-                          onClick={() => updateEstado(cotizacion.id, 'PAGADO')}
-                          className="bg-blue-500 text-white px-2 py-2 rounded-lg hover:bg-blue-600 transition text-xs sm:text-sm sm:px-4 sm:py-2 text-center"
-                        >
-                          Marcar Pagado
-                        </button>
-                        <button
-                          onClick={() => updateEstado(cotizacion.id, 'RECHAZADO')}
-                          className="bg-red-500 text-white px-2 py-2 rounded-lg hover:bg-red-600 transition text-xs sm:text-sm sm:px-4 sm:py-2 text-center"
-                        >
-                          Rechazar
-                        </button>
-                      </>
-                    )}
-                    {cotizacion.estado === 'PAGADO' && (
-                      <>
-                        <button
                           onClick={() => updateEstado(cotizacion.id, 'APROBADO')}
                           className="bg-green-500 text-white px-2 py-2 rounded-lg hover:bg-green-600 transition text-xs sm:text-sm sm:px-4 sm:py-2 text-center"
                         >
@@ -249,12 +246,14 @@ export default function CotizacionesAdmin() {
                         </button>
                       </>
                     )}
-                    <button
-                      onClick={() => deleteCotizacion(cotizacion.id)}
-                      className="border border-red-500 text-red-500 bg-white px-2 py-2 rounded-lg hover:bg-red-50 transition text-xs sm:text-sm sm:px-4 sm:py-2 text-center"
-                    >
-                      Eliminar
-                    </button>
+                    {(cotizacion.estado === 'APROBADO' || cotizacion.estado === 'RECHAZADO') && (
+                      <button
+                        onClick={() => deleteCotizacion(cotizacion.id)}
+                        className="border border-red-500 text-red-500 bg-white px-2 py-2 rounded-lg hover:bg-red-50 transition text-xs sm:text-sm sm:px-4 sm:py-2 text-center"
+                      >
+                        Eliminar
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
