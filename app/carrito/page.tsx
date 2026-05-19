@@ -222,20 +222,20 @@ export default function CarritoPage() {
 
     const totalRounded = roundTotalGeneral(totalOriginal);
 
-const formatPrecio = (precio: number) => `${precio.toFixed(2)} Bs`;
+    const formatPrecio = (precio: number) => `${precio.toFixed(2)} Bs`;
 
-    let mensajeTexto = `━━━━━━━━━━━━━━━━━━━━━━━━━
+    let mensajeTexto = `━━━━━━━━━━━━━━━━
  JOYERÍA CATALINA - COTIZACIÓN
-━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━
  DATOS DEL CLIENTE
-━━━━━━━━━━━━━━━━━━━━━━━━━
-Nombre:    ${formData.nombre}
-Celular:   ${formData.celular}
-Ubicación: ${formData.departamento} - ${formData.provincia}
-Notas:     
-━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━
+ Nombre:    ${formData.nombre}
+ Celular:   ${formData.celular}
+ Ubicación: ${formData.departamento} - ${formData.provincia}
+ Notas:     
+━━━━━━━━━━━━━━━━
  PRODUCTOS
-━━━━━━━━━━━━━━━━━━━━━━━━━`;
+━━━━━━━━━━━━━━━━`;
 
     Object.values(groupedByModulo).forEach((modulo) => {
       const subcatText = modulo.productos.length > 0 && modulo.productos[0].subcategoria !== 'Sin subcategoría' 
@@ -248,30 +248,13 @@ Notas:
       mensajeTexto += `\n     ▸ Subtotal: ${formatPrecio(modulo.subtotal)}`;
     });
 
-    mensajeTexto += `\n━━━━━━━━━━━━━━━━━━━━━━━━━
+    mensajeTexto += `
+━━━━━━━━━━━━━━━━
         💰 TOTAL: ${formatPrecio(totalRounded)}
-━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━
 ⏰ IMPORTANTE: Esta cotización tiene validez de 15 Minutos.
-Después de este tiempo, los artículos volverán a estar disponibles.
-━━━━━━━━━━━━━━━━━━━━━━━━━`;
-
-    Object.values(groupedByModulo).forEach((modulo) => {
-      const subcatText = modulo.productos.length > 0 && modulo.productos[0].subcategoria !== 'Sin subcategorÃ­a' 
-        ? ` (${modulo.productos[0].subcategoria})` 
-        : '';
-      mensajeTexto += `\nðŸ“¿ ${modulo.nombre.toUpperCase()}${subcatText}`;
-      modulo.productos.forEach(p => {
-        mensajeTexto += `\n     ${p.codigo}    x${p.cantidad}    ${formatPrecio(p.subtotal)}`;
-      });
-      mensajeTexto += `\n     â–¸ Subtotal: ${formatPrecio(modulo.subtotal)}`;
-    });
-
-    mensajeTexto += `\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-        ðŸ’° TOTAL: ${formatPrecio(totalRounded)}
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â° IMPORTANTE: Esta cotizaciÃ³n tiene validez de 15 Minutos.
-DespuÃ©s de este tiempo, los artÃ­culos volverÃ¡n a estar disponibles.
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€`;
+Después de este tiempo, los artículos vuelven a estar disponibles.
+━━━━━━━━━━━━━━━━`;
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const whatsappUrl = isMobile 
