@@ -41,10 +41,10 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rosado via-white to-vino/5 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-vino to-vino-dark shadow-lg mb-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-vino to-vino-dark shadow-lg mb-6 ring-4 ring-vino/30">
             <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
@@ -54,12 +54,12 @@ export default function AdminLogin() {
           </h1>
           <div className="flex items-center justify-center gap-3 mt-3">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-vino" />
-            <span className="text-sm text-vino font-medium tracking-wide uppercase">Joyería Bella</span>
+            <span className="text-sm text-vino font-medium tracking-wide uppercase">Joyería Catalina</span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-vino" />
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
           <form onSubmit={handleLogin} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-negro mb-2">Usuario</label>
@@ -99,7 +99,7 @@ export default function AdminLogin() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-vino transition-colors p-1"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-vino transition-colors p-1"
                   aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                 >
                   {showPassword ? (
@@ -117,7 +117,7 @@ export default function AdminLogin() {
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-100 text-red-600 p-3 rounded-xl text-sm text-center">
+              <div className="bg-red-50 border border-red-200 text-red-600 p-3 rounded-xl text-sm text-center">
                 {error}
               </div>
             )}
@@ -125,7 +125,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-vino py-3.5 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full bg-vino text-negro py-3.5 rounded-xl font-semibold shadow-lg hover:bg-vino-light transition-all disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -146,7 +146,7 @@ export default function AdminLogin() {
             </button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-gray-100 text-center space-y-3">
+          <div className="mt-8 pt-6 border-t border-gray-200 text-center space-y-3">
             <a
               href="https://wa.me/59160696565"
               target="_blank"

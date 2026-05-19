@@ -9,12 +9,12 @@ module.exports = {
     extend: {
       colors: {
         vino: {
-          DEFAULT: '#6B1D2F',
-          dark: '#4A1220',
-          light: '#D4A5A5',
+          DEFAULT: '#C9A227',
+          dark: '#A68520',
+          light: '#E8D48A',
         },
-        rosado: '#FFF0F0',
-        negro: '#0A0A0A',
+        rosado: '#FAF9F6',
+        negro: '#1A1A1A',
         plomo: {
           DEFAULT: '#9CA3AF',
           dark: '#4B5563',

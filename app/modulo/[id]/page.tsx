@@ -86,8 +86,8 @@ export default function SubcategoriaPage() {
       </header>
 
       <main className="flex-1">
-        <div className="relative bg-vino py-14 md:py-20">
-          <div className="absolute inset-0 bg-gradient-to-r from-vino via-gray-900 to-vino" />
+        <div className="relative bg-negro py-14 md:py-20 border-b border-vino/30">
+          <div className="absolute inset-0 bg-gradient-to-r from-negro via-gray-900 to-negro" />
           <div className="relative max-w-7xl mx-auto px-4 text-center">
             <p className="text-vino text-sm uppercase tracking-[0.3em] mb-3">{modulo?.nombre}</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-4">
@@ -131,12 +131,12 @@ export default function SubcategoriaPage() {
         </div>
       </main>
 
-      <footer className="bg-vino text-white py-10 mt-auto">
+      <footer className="bg-negro text-white py-10 mt-auto border-t border-vino/30">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-vino to-vino-dark flex items-center justify-center shadow-lg">
-            <span className="text-white text-xl font-bold">JC</span>
+          <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-vino to-vino-dark flex items-center justify-center shadow-lg ring-2 ring-vino/50">
+            <span className="text-negro text-xl font-bold">JC</span>
           </div>
-          <p className="font-bold text-xl text-white tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Catalina</p>
+          <p className="font-bold text-xl text-vino tracking-wider" style={{ fontFamily: 'var(--font-logo), Montserrat, sans-serif' }}>Joyería Catalina</p>
           <p className="text-gray-400 mt-2">Belleza que brilla, calidad que perdura</p>
         </div>
       </footer>
