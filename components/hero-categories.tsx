@@ -87,24 +87,21 @@ export function HeroCategories({ modulos }: HeroCategoriesProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-50/50" />
       
       <div className="relative max-w-7xl mx-auto px-4">
-        <div className="relative overflow-hidden rounded-2xl mb-8 bg-white py-10 px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-negro mb-3 tracking-tight">
+        <div className="relative overflow-hidden rounded-2xl mb-6 bg-white py-5 px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-negro mb-1 tracking-tight">
             Nuestras Colecciones
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-2">
+          <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-1">
             Piezas únicas diseñadas para brillar en cada momento especial
           </p>
-          <p className="text-vino font-semibold text-sm tracking-wide flex items-center justify-center gap-2">
+          <p className="text-vino font-semibold text-xs tracking-wide flex items-center justify-center gap-2 mb-2">
             <span className="w-2 h-2 bg-vino rounded-full"></span>
             TIENDA VIRTUAL SANTA CRUZ - BOLIVIA
           </p>
-        </div>
-
-        <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-vino" />
-            <span className="text-vino text-sm font-medium tracking-[0.3em] uppercase">Joyería Exclusiva</span>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-vino" />
+          <div className="inline-flex items-center gap-2">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-vino" />
+            <span className="text-vino text-xs font-medium tracking-[0.2em] uppercase">Joyería Exclusiva</span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-vino" />
           </div>
         </div>
 
