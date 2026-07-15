@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { supabase, Cotizacion, CotizacionProducto } from '@/lib/supabase';
+import { supabase, Cotizacion, CotizacionProducto, Modulo, Subcategoria } from '@/lib/supabase';
 import { formatCurrency, WHATSAPP_ADMIN } from '@/lib/constants';
 import { AdminProtected } from '@/components/admin-protected';
 
@@ -16,6 +16,8 @@ interface ProductoStock {
 export default function CotizacionesAdmin() {
   const [cotizaciones, setCotizaciones] = useState<Cotizacion[]>([]);
   const [productosStock, setProductosStock] = useState<ProductoStock[]>([]);
+  const [modulos, setModulos] = useState<Modulo[]>([]);
+  const [subcategorias, setSubcategorias] = useState<Subcategoria[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterEstado, setFilterEstado] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,15 +27,45 @@ export default function CotizacionesAdmin() {
   }, []);
 
   async function loadData() {
-    const [cotizacionesRes, productosRes] = await Promise.all([
+    const [cotizacionesRes, productosRes, modulosRes, subcategoriasRes] = await Promise.all([
       supabase.from('cotizaciones').select('*').order('created_at', { ascending: false }),
-      supabase.from('productos').select('id, codigo, nombre, stock')
+      supabase.from('productos').select('id, codigo, nombre, stock'),
+      fetch('/api/admin/modulos?tipo=modulos').then(r => r.json()),
+      fetch('/api/admin/modulos?tipo=subcategorias').then(r => r.json()),
     ]);
-    
+
     if (cotizacionesRes.data) setCotizaciones(cotizacionesRes.data);
     if (productosRes.data) setProductosStock(productosRes.data);
+    if (modulosRes.data) setModulos(modulosRes.data);
+    if (subcategoriasRes.data) setSubcategorias(subcategoriasRes.data);
     setLoading(false);
   }
+
+  const agruparPorModulo = (productos: CotizacionProducto[]) => {
+    const grupos: { key: string; encabezado: string; productos: CotizacionProducto[]; subtotal: number }[] = [];
+    const indices: Record<string, number> = {};
+
+    for (const prod of productos) {
+      const key = `${prod.modulo_id || ''}__${prod.subcategoria_id || ''}`;
+
+      if (indices[key] === undefined) {
+        const modulo = modulos.find(m => m.id === prod.modulo_id);
+        const subcategoria = subcategorias.find(s => s.id === prod.subcategoria_id);
+        const encabezado = modulo
+          ? (subcategoria ? `${modulo.nombre} (${subcategoria.nombre})` : modulo.nombre)
+          : 'Sin módulo';
+
+        indices[key] = grupos.length;
+        grupos.push({ key, encabezado, productos: [], subtotal: 0 });
+      }
+
+      const grupo = grupos[indices[key]];
+      grupo.productos.push(prod);
+      grupo.subtotal += prod.precio * prod.cantidad;
+    }
+
+    return grupos;
+  };
 
   const filteredCotizaciones = cotizaciones.filter(c => {
     const matchesEstado = !filterEstado || c.estado === filterEstado;
@@ -185,28 +217,38 @@ export default function CotizacionesAdmin() {
 
                 <div className="p-4">
                   <h4 className="font-semibold text-negro mb-3">Productos:</h4>
-                  <div className="space-y-2">
-                    {productos.map((prod, idx) => {
-                      const stockDisp = getStockProducto(prod.producto_id);
-                      const sinStock = prod.cantidad > stockDisp;
-                      return (
-                        <div key={idx} className={`flex justify-between items-center border-b border-gray-100 pb-2 ${sinStock ? 'bg-red-50 px-2 py-1 rounded' : ''}`}>
-                          <div className="flex items-center gap-2">
-                            <span className="font-medium text-vino">{prod.codigo}</span>
-                            <span className="text-gray-600">{prod.nombre}</span>
-                            {sinStock && (
-                              <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">
-                                Stock: {stockDisp}
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-right">
-                            <span className="text-sm text-gray-500">x{prod.cantidad}</span>
-                            <span className="ml-4 font-semibold">{formatCurrency(prod.precio * prod.cantidad)}</span>
-                          </div>
+                  <div className="space-y-4">
+                    {agruparPorModulo(productos).map((grupo) => (
+                      <div key={grupo.key}>
+                        <h5 className="text-sm font-semibold text-cafe-medio mb-2">{grupo.encabezado}</h5>
+                        <div className="space-y-2">
+                          {grupo.productos.map((prod, idx) => {
+                            const stockDisp = getStockProducto(prod.producto_id);
+                            const sinStock = prod.cantidad > stockDisp;
+                            return (
+                              <div key={idx} className={`flex justify-between items-center border-b border-gray-100 pb-2 ${sinStock ? 'bg-red-50 px-2 py-1 rounded' : ''}`}>
+                                <div className="flex items-center gap-2">
+                                  <span className="font-medium text-vino">{prod.codigo}</span>
+                                  <span className="text-gray-600">{prod.nombre}</span>
+                                  {sinStock && (
+                                    <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">
+                                      Stock: {stockDisp}
+                                    </span>
+                                  )}
+                                </div>
+                                <div className="text-right">
+                                  <span className="text-sm text-gray-500">x{prod.cantidad}</span>
+                                  <span className="ml-4 font-semibold">{formatCurrency(prod.precio * prod.cantidad)}</span>
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
-                      );
-                    })}
+                        <div className="text-right text-sm text-gray-500 mt-1">
+                          ▸ Subtotal {grupo.encabezado}: {formatCurrency(grupo.subtotal)}
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="mt-4 pt-4 border-t-2 border-vino flex justify-between items-center">
