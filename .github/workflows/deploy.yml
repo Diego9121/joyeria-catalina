@@ -1,0 +1,32 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and deploy
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://zszvnsqozyaaxbpqpnrp.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpzenZuc3FvenlhYXhicHFwbnJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3MzA5OTUsImV4cCI6MjA5NDMwNjk5NX0.XdLqZoKkIMngIeL6MAiO4v6iuHSvrfJ1wJi-B05mEOw
+          NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: dotgtlphj
+          NEXT_PUBLIC_WHATSAPP_ADMIN: "59173394005"
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npm run deploy
