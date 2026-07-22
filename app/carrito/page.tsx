@@ -138,6 +138,11 @@ export default function CarritoPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Abrir la ventana en blanco ANTES de cualquier await, para que el navegador
+    // lo reconozca como resultado directo del click y no lo bloquee como popup.
+    const ventanaWhatsapp = window.open('', '_blank');
+
     setSubmitting(true);
 
     const productosCotizacion = productos.map(p => ({
@@ -150,34 +155,32 @@ export default function CarritoPage() {
       subcategoria_id: p.subcategoria_id,
     }));
 
-    for (const prod of productosCotizacion) {
-      const { data: productoActual } = await supabase
-        .from('productos')
-        .select('stock')
-        .eq('id', prod.producto_id)
-        .single();
+    const productoIds = productosCotizacion.map(p => p.producto_id);
+    const { data: stockActual } = await supabase
+      .from('productos')
+      .select('id, stock')
+      .in('id', productoIds);
 
-      if (!productoActual || productoActual.stock < prod.cantidad) {
-        alert(`Stock insuficiente para ${prod.codigo}. Stock disponible: ${productoActual?.stock || 0}`);
+    const stockPorId = new Map((stockActual || []).map(p => [p.id, p.stock]));
+
+    for (const prod of productosCotizacion) {
+      const stockDisponible = stockPorId.get(prod.producto_id);
+      if (stockDisponible === undefined || stockDisponible < prod.cantidad) {
+        ventanaWhatsapp?.close();
+        alert(`Stock insuficiente para ${prod.codigo}. Stock disponible: ${stockDisponible || 0}`);
         setSubmitting(false);
         return;
       }
     }
 
-    for (const prod of productosCotizacion) {
-      const { data: productoActual } = await supabase
-        .from('productos')
-        .select('stock')
-        .eq('id', prod.producto_id)
-        .single();
-
-      if (productoActual) {
-        await supabase
+    await Promise.all(
+      productosCotizacion.map(prod =>
+        supabase
           .from('productos')
-          .update({ stock: productoActual.stock - prod.cantidad })
-          .eq('id', prod.producto_id);
-      }
-    }
+          .update({ stock: (stockPorId.get(prod.producto_id) || 0) - prod.cantidad })
+          .eq('id', prod.producto_id)
+      )
+    );
 
     const { error } = await supabase.from('cotizaciones').insert({
       cliente_nombre: formData.nombre,
@@ -190,6 +193,7 @@ export default function CarritoPage() {
     });
 
     if (error) {
+      ventanaWhatsapp?.close();
       alert('Error al guardar cotización');
       setSubmitting(false);
       return;
@@ -257,17 +261,47 @@ Después de este tiempo, los artículos vuelven a estar disponibles.
 ━━━━━━━━━━━━━━━━`;
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const whatsappUrl = isMobile 
-      ? `https://api.whatsapp.com/send?phone=${WHATSAPP_ADMIN}&text=${encodeURIComponent(mensajeTexto)}`
-      : `https://wa.me/${WHATSAPP_ADMIN}?text=${encodeURIComponent(mensajeTexto)}`;
-    
-    const link = document.createElement('a');
-    link.href = whatsappUrl;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const UMBRAL_COTIZACION_EXTENSA = 40;
+    const esCotizacionExtensa = productosCotizacion.length > UMBRAL_COTIZACION_EXTENSA;
+
+    let whatsappUrl: string;
+    let mensajeCopiado = false;
+
+    if (esCotizacionExtensa) {
+      try {
+        await navigator.clipboard.writeText(mensajeTexto);
+        mensajeCopiado = true;
+      } catch {
+        mensajeCopiado = false;
+      }
+    }
+
+    if (mensajeCopiado) {
+      whatsappUrl = isMobile
+        ? `https://api.whatsapp.com/send?phone=${WHATSAPP_ADMIN}`
+        : `https://wa.me/${WHATSAPP_ADMIN}`;
+    } else {
+      whatsappUrl = isMobile
+        ? `https://api.whatsapp.com/send?phone=${WHATSAPP_ADMIN}&text=${encodeURIComponent(mensajeTexto)}`
+        : `https://wa.me/${WHATSAPP_ADMIN}?text=${encodeURIComponent(mensajeTexto)}`;
+    }
+
+    if (ventanaWhatsapp) {
+      ventanaWhatsapp.location.href = whatsappUrl;
+    } else {
+      const link = document.createElement('a');
+      link.href = whatsappUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    if (mensajeCopiado) {
+      alert('La cotización es muy extensa: el mensaje se copió al portapapeles. Pégalo en el chat de WhatsApp que se abrió (mantén presionado el campo de texto y selecciona "Pegar").');
+    }
+
     clearCart();
     setSubmitted(true);
   };

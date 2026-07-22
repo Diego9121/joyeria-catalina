@@ -88,20 +88,24 @@ export default function CotizacionesAdmin() {
     if (!cotizacion) return;
 
     if (nuevoEstado === 'RECHAZADO') {
-      for (const prod of cotizacion.productos) {
-        const { data: producto } = await supabase
-          .from('productos')
-          .select('stock')
-          .eq('id', prod.producto_id)
-          .single();
-        
-        if (producto) {
-          await supabase
-            .from('productos')
-            .update({ stock: producto.stock + prod.cantidad })
-            .eq('id', prod.producto_id);
-        }
-      }
+      const productoIds = cotizacion.productos.map(p => p.producto_id);
+      const { data: productosActuales } = await supabase
+        .from('productos')
+        .select('id, stock')
+        .in('id', productoIds);
+
+      const stockPorId = new Map((productosActuales || []).map(p => [p.id, p.stock]));
+
+      await Promise.all(
+        cotizacion.productos
+          .filter(prod => stockPorId.has(prod.producto_id))
+          .map(prod =>
+            supabase
+              .from('productos')
+              .update({ stock: (stockPorId.get(prod.producto_id) || 0) + prod.cantidad })
+              .eq('id', prod.producto_id)
+          )
+      );
     }
 
     await supabase
