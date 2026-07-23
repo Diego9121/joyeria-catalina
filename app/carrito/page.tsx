@@ -6,6 +6,32 @@ import { useRouter } from 'next/navigation';
 import { supabase, Producto, Modulo, Subcategoria } from '@/lib/supabase';
 import { formatCurrency, WHATSAPP_ADMIN, DEPARTAMENTOS_BOLIVIA } from '@/lib/constants';
 import { useCart } from '@/components/cart-context';
+import { Button } from '@/components/ui/button';
+
+const DEV_WHATSAPP = '59169710825';
+
+function DevCredit() {
+  return (
+    <div className="mt-8 w-full max-w-xs">
+      <div className="bg-gray-50 border border-gray-100 rounded-xl p-6 text-center">
+        <p className="text-gray-400 text-xs uppercase tracking-wide mb-3">Sistema desarrollado por:</p>
+        <img src="/logoCipherMoon.png" alt="CipherMoon" className="h-24 w-auto mx-auto mb-4 object-contain" />
+        <Button
+          size="lg"
+          className="bg-green-500 hover:bg-green-600 text-white gap-2 px-6"
+          render={
+            <a href={`https://wa.me/${DEV_WHATSAPP}`} target="_blank" rel="noopener noreferrer" />
+          }
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+          </svg>
+          Contactar
+        </Button>
+      </div>
+    </div>
+  );
+}
 
 export default function CarritoPage() {
   const router = useRouter();
@@ -138,6 +164,11 @@ export default function CarritoPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Abrir la ventana en blanco ANTES de cualquier await, para que el navegador
+    // lo reconozca como resultado directo del click y no lo bloquee como popup.
+    const ventanaWhatsapp = window.open('', '_blank');
+
     setSubmitting(true);
 
     const productosCotizacion = productos.map(p => ({
@@ -150,34 +181,32 @@ export default function CarritoPage() {
       subcategoria_id: p.subcategoria_id,
     }));
 
-    for (const prod of productosCotizacion) {
-      const { data: productoActual } = await supabase
-        .from('productos')
-        .select('stock')
-        .eq('id', prod.producto_id)
-        .single();
+    const productoIds = productosCotizacion.map(p => p.producto_id);
+    const { data: stockActual } = await supabase
+      .from('productos')
+      .select('id, stock')
+      .in('id', productoIds);
 
-      if (!productoActual || productoActual.stock < prod.cantidad) {
-        alert(`Stock insuficiente para ${prod.codigo}. Stock disponible: ${productoActual?.stock || 0}`);
+    const stockPorId = new Map((stockActual || []).map(p => [p.id, p.stock]));
+
+    for (const prod of productosCotizacion) {
+      const stockDisponible = stockPorId.get(prod.producto_id);
+      if (stockDisponible === undefined || stockDisponible < prod.cantidad) {
+        ventanaWhatsapp?.close();
+        alert(`Stock insuficiente para ${prod.codigo}. Stock disponible: ${stockDisponible || 0}`);
         setSubmitting(false);
         return;
       }
     }
 
-    for (const prod of productosCotizacion) {
-      const { data: productoActual } = await supabase
-        .from('productos')
-        .select('stock')
-        .eq('id', prod.producto_id)
-        .single();
-
-      if (productoActual) {
-        await supabase
+    await Promise.all(
+      productosCotizacion.map(prod =>
+        supabase
           .from('productos')
-          .update({ stock: productoActual.stock - prod.cantidad })
-          .eq('id', prod.producto_id);
-      }
-    }
+          .update({ stock: (stockPorId.get(prod.producto_id) || 0) - prod.cantidad })
+          .eq('id', prod.producto_id)
+      )
+    );
 
     const { error } = await supabase.from('cotizaciones').insert({
       cliente_nombre: formData.nombre,
@@ -190,6 +219,7 @@ export default function CarritoPage() {
     });
 
     if (error) {
+      ventanaWhatsapp?.close();
       alert('Error al guardar cotización');
       setSubmitting(false);
       return;
@@ -257,17 +287,47 @@ Después de este tiempo, los artículos vuelven a estar disponibles.
 ━━━━━━━━━━━━━━━━`;
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const whatsappUrl = isMobile 
-      ? `https://api.whatsapp.com/send?phone=${WHATSAPP_ADMIN}&text=${encodeURIComponent(mensajeTexto)}`
-      : `https://wa.me/${WHATSAPP_ADMIN}?text=${encodeURIComponent(mensajeTexto)}`;
-    
-    const link = document.createElement('a');
-    link.href = whatsappUrl;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const UMBRAL_COTIZACION_EXTENSA = 40;
+    const esCotizacionExtensa = productosCotizacion.length > UMBRAL_COTIZACION_EXTENSA;
+
+    let whatsappUrl: string;
+    let mensajeCopiado = false;
+
+    if (esCotizacionExtensa) {
+      try {
+        await navigator.clipboard.writeText(mensajeTexto);
+        mensajeCopiado = true;
+      } catch {
+        mensajeCopiado = false;
+      }
+    }
+
+    if (mensajeCopiado) {
+      whatsappUrl = isMobile
+        ? `https://api.whatsapp.com/send?phone=${WHATSAPP_ADMIN}`
+        : `https://wa.me/${WHATSAPP_ADMIN}`;
+    } else {
+      whatsappUrl = isMobile
+        ? `https://api.whatsapp.com/send?phone=${WHATSAPP_ADMIN}&text=${encodeURIComponent(mensajeTexto)}`
+        : `https://wa.me/${WHATSAPP_ADMIN}?text=${encodeURIComponent(mensajeTexto)}`;
+    }
+
+    if (ventanaWhatsapp) {
+      ventanaWhatsapp.location.href = whatsappUrl;
+    } else {
+      const link = document.createElement('a');
+      link.href = whatsappUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    if (mensajeCopiado) {
+      alert('La cotización es muy extensa: el mensaje se copió al portapapeles. Pégalo en el chat de WhatsApp que se abrió (mantén presionado el campo de texto y selecciona "Pegar").');
+    }
+
     clearCart();
     setSubmitted(true);
   };
@@ -290,6 +350,26 @@ Después de este tiempo, los artículos vuelven a estar disponibles.
     return <div className="min-h-screen bg-white flex items-center justify-center text-negro">Cargando carrito...</div>;
   }
 
+  if (submitted) {
+    return (
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4">
+        <div className="w-24 h-24 mb-6 bg-green-100 rounded-full flex items-center justify-center">
+          <svg className="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h1 className="text-2xl font-bold text-negro mb-3">¡Cotización Enviada!</h1>
+        <p className="text-gray-500 mb-2 text-center">Tu mensaje se ha abierto en WhatsApp</p>
+        <p className="text-gray-400 text-sm mb-8 text-center">Envía el mensaje para completar tu solicitud</p>
+        <Link href="/" className="px-8 py-3 bg-vino text-white rounded-full font-semibold hover:bg-vino-dark transition">
+          Volver al inicio
+        </Link>
+
+        <DevCredit />
+      </div>
+    );
+  }
+
   if (productos.length === 0) {
     return (
       <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4">
@@ -305,24 +385,8 @@ Después de este tiempo, los artículos vuelven a estar disponibles.
         <Link href="/" className="px-8 py-3 bg-vino text-white rounded-full font-semibold hover:bg-vino-dark transition">
           Explorar categorías
         </Link>
-      </div>
-    );
-  }
 
-  if (submitted) {
-    return (
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4">
-        <div className="w-24 h-24 mb-6 bg-green-100 rounded-full flex items-center justify-center">
-          <svg className="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h1 className="text-2xl font-bold text-negro mb-3">¡Cotización Enviada!</h1>
-        <p className="text-gray-500 mb-2 text-center">Tu mensaje se ha abierto en WhatsApp</p>
-        <p className="text-gray-400 text-sm mb-8 text-center">Envía el mensaje para completar tu solicitud</p>
-        <Link href="/" className="px-8 py-3 bg-vino text-white rounded-full font-semibold hover:bg-vino-dark transition">
-          Volver al inicio
-        </Link>
+        <DevCredit />
       </div>
     );
   }
