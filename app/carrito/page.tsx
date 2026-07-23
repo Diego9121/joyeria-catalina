@@ -7,6 +7,27 @@ import { supabase, Producto, Modulo, Subcategoria } from '@/lib/supabase';
 import { formatCurrency, WHATSAPP_ADMIN, DEPARTAMENTOS_BOLIVIA } from '@/lib/constants';
 import { useCart } from '@/components/cart-context';
 
+const DEV_WHATSAPP = '59169710825';
+
+function DevCredit() {
+  return (
+    <div className="mt-8 w-full max-w-xs">
+      <div className="bg-gray-50 border border-gray-100 rounded-xl p-6 text-center">
+        <p className="text-gray-400 text-xs uppercase tracking-wide mb-3">Sistema desarrollado por:</p>
+        <img src="/logoCipherMoon.png" alt="CipherMoon" className="h-12 w-auto mx-auto mb-4 object-contain" />
+        <a
+          href={`https://wa.me/${DEV_WHATSAPP}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block px-6 py-2 border border-gray-200 rounded-lg text-sm font-medium text-negro hover:bg-gray-100 transition"
+        >
+          Contactar
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function CarritoPage() {
   const router = useRouter();
   const { items, updateQuantity, removeFromCart, clearCart, totalItems } = useCart();
@@ -338,6 +359,8 @@ Después de este tiempo, los artículos vuelven a estar disponibles.
         <Link href="/" className="px-8 py-3 bg-vino text-white rounded-full font-semibold hover:bg-vino-dark transition">
           Volver al inicio
         </Link>
+
+        <DevCredit />
       </div>
     );
   }
@@ -357,6 +380,8 @@ Después de este tiempo, los artículos vuelven a estar disponibles.
         <Link href="/" className="px-8 py-3 bg-vino text-white rounded-full font-semibold hover:bg-vino-dark transition">
           Explorar categorías
         </Link>
+
+        <DevCredit />
       </div>
     );
   }
